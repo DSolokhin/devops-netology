@@ -48,7 +48,8 @@
      PATH=/tmp/new_path_directory/:$PATH  
      
 13. Задания, созданные с помощью at, выполняются только один раз, а batch планирует задания и выполняет когда позволяет уровень загрузки системы.  
-14. ![14](https://user-images.githubusercontent.com/26553608/147574643-275da2a5-bc36-4b25-a81a-de0ba0bdebb4.PNG)
+14.   
+![14](https://user-images.githubusercontent.com/26553608/147574643-275da2a5-bc36-4b25-a81a-de0ba0bdebb4.PNG)
 
 
 
