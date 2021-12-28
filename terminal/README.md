@@ -23,4 +23,10 @@
          *v.memory = 2048*  
          *v.cpus = 4*   
        *end*  
-   Судя по опыту с Hyper-v это нужно делать сразу перед соданием vm.
+   Судя по опыту с Hyper-v это нужно делать сразу перед созданием vm.  
+   
+7. Заходим в vm:  
+![7](https://user-images.githubusercontent.com/26553608/147552534-49cbe793-eed0-43ea-a911-e1bcd55a3868.PNG)
+
+
+
