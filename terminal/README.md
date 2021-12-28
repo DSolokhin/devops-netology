@@ -26,7 +26,12 @@
    Судя по опыту с Hyper-v это нужно делать сразу перед созданием vm.  
    
 7. Заходим в vm:  
-![7](https://user-images.githubusercontent.com/26553608/147552534-49cbe793-eed0-43ea-a911-e1bcd55a3868.PNG)
+![7](https://user-images.githubusercontent.com/26553608/147552534-49cbe793-eed0-43ea-a911-e1bcd55a3868.PNG)  
+
+8. Переменные HISTSIZE и HISTFILESIZE, первый это сколько строк хранится в памяти за сессию, второй это максимальное коли-во сохраненных команд.  
+  ![8](https://user-images.githubusercontent.com/26553608/147554291-77d20ab6-4d76-4884-9d4b-3509aa4276d7.PNG)
+
+  
 
 
 
