@@ -2,4 +2,5 @@
 2. grep -c <some_string> <some_file>  
 3. systemd(1)  
 4. ls >/dev/pts/1  
-5. 
+5. cat myscript > myscript_log  
+6. 
