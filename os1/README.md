@@ -12,4 +12,6 @@ stat("/usr/bin/bash", {st_mode=S_IFREG|0755, st_size=1183448, ...}) = 0
 3. **cat /dev/null >| /proc/[pid]/fd/[дискриптор] или же без перенаправления потоков утилитой truncate -s 0 /proc/[pid]/fd/[дискриптор]**  
 4. Ресурсы памяти или процессора не занимают, но накапливание необрабатываемых зомби приводит к утечке ресурсов в виде накопления записей в таблице процессов. Обычно в таких случаях аппаратно перезапускают ОС.  
 5.  /usr/local/share/dbus-1/system-services  
-    /lib/dbus-1/system-services
+    /lib/dbus-1/system-services  
+6. execve("/usr/bin/ls", ["ls", "uname", "-a"], 0x7ffdbff9ef10 /* 19 vars */) = 0  
+7. 
