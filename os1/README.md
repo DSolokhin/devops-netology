@@ -20,7 +20,8 @@ stat("/usr/bin/bash", {st_mode=S_IFREG|0755, st_size=1183448, ...}) = 0
     /usr/share/dbus-1/system-services  
     /lib/dbus-1/system-services  
     /var/lib/snapd/dbus-1/system-services/  
-6. uname возвращает информацию о системе в структуру с адресом buf. Структура utsname определена в <sys/utsname.h>   
+6. uname - a:  
+   write(1, "Linux vagrant 5.4.0-91-generic #"..., 106Linux vagrant 5.4.0-91-generic #102-Ubuntu SMP Fri Nov 5 16:31:28 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
    Альтернативное местоположение /proc/version  
    vagrant@vagrant:~$ cat /proc/version   
    Строка 2583 /proc/sys/kernel/ostype and /proc/sys/kernel/osrelease  
