@@ -23,7 +23,7 @@ stat("/usr/bin/bash", {st_mode=S_IFREG|0755, st_size=1183448, ...}) = 0
 6. uname возвращает информацию о системе в структуру с адресом buf. Структура utsname определена в <sys/utsname.h>   
    Альтернативное местоположение /proc/version  
    vagrant@vagrant:~$ cat /proc/version  
-   Linux version 5.4.0-91-generic (buildd@lcy01-amd64-017) (gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)) 102-Ubuntu SMP Fri Nov 5 16:31:28 UTC 2021  
+   Linux version 5.4.0-91-generic buildd@lcy01-amd64-017 gcc version 9.3.0 Ubuntu 9.3.0-17ubuntu1~20.04 102-Ubuntu SMP Fri Nov 5 16:31:28 UTC 2021  
    Строка 2583 /proc/sys/kernel/ostype and /proc/sys/kernel/osrelease  
               These files give substrings of /proc/version.  
 7. Если в командной строке стоит command1 && command2, то command2 выполняется в том, и только в том случае, если статус выхода из команды command1 равен нулю, что говорит об    успешном ее завершении. В данном случае (test -d /tmp/some_dir && echo Hi) command1 равен 1, так как при проверке каталога some_dir не существует. В случае test -d /tmp/some_dir; echo Hi команды выполняются поочереди независимо от условия первой команды.  Если применить set -e то && не нужно, так как флаг -e означает выйти немедленно, если команда завершается с ненулевым статусом.   
