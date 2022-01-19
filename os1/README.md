@@ -20,7 +20,7 @@ stat("/usr/bin/bash", {st_mode=S_IFREG|0755, st_size=1183448, ...}) = 0
     /usr/share/dbus-1/system-services  
     /lib/dbus-1/system-services  
     /var/lib/snapd/dbus-1/system-services/  
-6. **uname** возвращает информацию о системе в структуру с адресом buf. Структура utsname определена в <sys/utsname.h>   
+6. uname возвращает информацию о системе в структуру с адресом buf. Структура utsname определена в <sys/utsname.h>   
    Альтернативное местоположение /proc/version  
    vagrant@vagrant:~$ cat /proc/version  
    Linux version 5.4.0-91-generic (buildd@lcy01-amd64-017) (gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)) 102-Ubuntu SMP Fri Nov 5 16:31:28 UTC 2021  
