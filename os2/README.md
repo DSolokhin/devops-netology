@@ -15,14 +15,21 @@ ExecStart=/usr/sbin/cron -f -P $EXTRA_OPTS #переменная для допо
     NETWORK: node_network_receive_bytes  
              node_network_receive_packets_total  
  
- 3. ![netdata](https://user-images.githubusercontent.com/26553608/150738217-83723776-036f-4455-b0d9-99054d5154e3.JPG)  
+ 3.
+ ![netdata](https://user-images.githubusercontent.com/26553608/150738217-83723776-036f-4455-b0d9-99054d5154e3.JPG)  
  
  4. dmesg -T  
     systemd[1]: Detected virtualization oracle.  
     [Mon Jan 24 07:11:43 2022] systemd[1]: Detected architecture x86-64.  
     [Mon Jan 24 07:11:43 2022] systemd[1]: Set hostname to <vagrant>.  
     
- 5. 
+ 5. fs.nr_open - это системное значение лимит на количество открытых дескрипторов, по умолчанию:  
+     vagrant@vagrant:~$ /sbin/sysctl -n fs.nr_open  
+     1048576   
+    Соответствует файл /proc/sys/fs/nr_open  
+    
+ 6. 
+    
 
     
      
