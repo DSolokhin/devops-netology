@@ -14,8 +14,9 @@ ExecStart=/usr/sbin/cron -f -P $EXTRA_OPTS #переменная для допо
     HDD: node_filesystem_avail_bytes  
     NETWORK: node_network_receive_bytes  
              node_network_receive_packets_total  
-             
-3. 
+ 
+ 3. ![netdata](https://user-images.githubusercontent.com/26553608/150738217-83723776-036f-4455-b0d9-99054d5154e3.JPG)
+
     
      
     
