@@ -28,8 +28,10 @@ ExecStart=/usr/sbin/cron -f -P $EXTRA_OPTS #переменная для допо
      1048576   
     Соответствует файл /proc/sys/fs/nr_open  
     
- 6. 
+ 6. unshare -f --pid --mount-proc sleep 1h  
     
+    ![nsenter](https://user-images.githubusercontent.com/26553608/150741871-5c5502e7-39d8-4f30-9032-bddd81a81d2e.JPG)
+
 
     
      
