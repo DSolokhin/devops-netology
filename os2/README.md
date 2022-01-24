@@ -30,7 +30,29 @@ ExecStart=/usr/sbin/cron -f -P $EXTRA_OPTS #переменная для допо
     
  6. unshare -f --pid --mount-proc sleep 1h  
     
-    ![nsenter](https://user-images.githubusercontent.com/26553608/150741871-5c5502e7-39d8-4f30-9032-bddd81a81d2e.JPG)
+    ![nsenter](https://user-images.githubusercontent.com/26553608/150741871-5c5502e7-39d8-4f30-9032-bddd81a81d2e.JPG)  
+    
+ 7. Это fork бомба  
+    :(){ :|:& };:
+
+    для понятности заменим : именем f и отформатируем код.
+
+    f() {
+    f | f &
+     }
+    f
+
+   таким образом это функция, которая параллельно пускает два своих экземпляра. Каждый пускает ещё по два и т.д.   
+   При отсутствии лимита на число процессов машина быстро исчерпывает физическую память и уходит в своп.  
+    dmesg  
+    cgroup: fork rejected by pids controller in /user.slice/user-1000.slice/session-6.scope
+    
+    Лимит на уровне всей ОС меняется параметром -nproc в /etc/security/limits.conf    
+    По умолчанию лимит 1024, увеличить путем добавления строк:  
+    * hard nofile 97816  
+    * soft nofile 97816  
+    ulimit -n    
+    97816  
 
 
     
