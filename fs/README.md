@@ -5,4 +5,8 @@ fsutil sparse setrange test.nul 0 10000000000
 
 2. 
 
-3. 
+3. ![alt text](https://github.com/DSolokhin/devops-netology/blob/master/fs/fs3.JPG)  
+ 
+4. 
+
+
