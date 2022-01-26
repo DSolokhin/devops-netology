@@ -23,7 +23,21 @@ fsutil sparse setrange test.nul 0 10000000000
   Physical volume "/dev/md0" successfully created.  
   Physical volume "/dev/md1" successfully created.  
   
-9. 
+9. vgcreate vg1 /dev/md0 /dev/md1     
+![fs9](https://user-images.githubusercontent.com/26553608/151128937-f901fa58-3aaa-4db3-9b4c-7d16c792757b.JPG)  
+
+10. root@vagrant:~# lvcreate -L 100M vg1 /dev/md1  
+    Logical volume "lvol0" created.  
+    
+11. root@vagrant:~# mkfs.ext4 /dev/vg1/lvol0  
+mke2fs 1.45.5 (07-Jan-2020)  
+Creating filesystem with 25600 4k blocks and 25600 inodes  
+
+Allocating group tables: done  
+Writing inode tables: done  
+Creating journal (1024 blocks): done  
+Writing superblocks and filesystem accounting information: done  
+
 
    
 
