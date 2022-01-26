@@ -7,10 +7,13 @@ fsutil sparse setrange test.nul 0 10000000000
 
 3. ![alt text](https://github.com/DSolokhin/devops-netology/blob/master/fs/fs3.JPG)  
 
-4. ![fs4](https://user-images.githubusercontent.com/26553608/151120030-27328589-5577-47ab-bb55-bccd29f6f50c.JPG)
+4. ![fs4](https://user-images.githubusercontent.com/26553608/151122158-d4173d89-8a8f-4eaa-adc9-1da741dcfd4a.JPG)
 
 5. sfdisk -d /dev/sdb | sfdisk /dev/sdc  
-   ![fs5](https://user-images.githubusercontent.com/26553608/151120904-c0572acf-fba0-437a-b477-4e951da622a3.JPG)
+   ![fs5](https://user-images.githubusercontent.com/26553608/151122367-fd83559d-0a17-4973-bd41-1c7ab577f222.JPG)
+
+   
+6. 
   
    
 
