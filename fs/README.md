@@ -13,8 +13,9 @@ fsutil sparse setrange test.nul 0 10000000000
    ![fs5](https://user-images.githubusercontent.com/26553608/151122367-fd83559d-0a17-4973-bd41-1c7ab577f222.JPG)
 
    
-6. 
-  
+6. mdadm --create --verbose /dev/md0 -l 1 -n 2 /dev/sd{b1,c1}     
+  ![fs6](https://user-images.githubusercontent.com/26553608/151126009-bb09d6ba-8891-4ca4-9566-0f8fe8f6a59a.JPG)
+
    
 
 
