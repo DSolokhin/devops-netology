@@ -9,6 +9,9 @@ fsutil sparse setrange test.nul 0 10000000000
 
 4. ![fs4](https://user-images.githubusercontent.com/26553608/151120030-27328589-5577-47ab-bb55-bccd29f6f50c.JPG)
 
-5. 
+5. sfdisk -d /dev/sdb | sfdisk /dev/sdc  
+   ![fs5](https://user-images.githubusercontent.com/26553608/151120904-c0572acf-fba0-437a-b477-4e951da622a3.JPG)
+  
+   
 
 
