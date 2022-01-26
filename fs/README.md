@@ -52,7 +52,16 @@ fsutil sparse setrange test.nul 0 10000000000
   /dev/md1: Moved: 100.00%  
   
 17. mdadm /dev/md0 -f /dev/sdb1  
-    ![fs17](https://user-images.githubusercontent.com/26553608/151132490-b8feb84c-4b0d-480c-ab61-96c66a56888d.JPG)
+    ![fs17](https://user-images.githubusercontent.com/26553608/151132490-b8feb84c-4b0d-480c-ab61-96c66a56888d.JPG)  
+    
+18. ![fs18](https://user-images.githubusercontent.com/26553608/151132983-8378aaee-f231-4a5b-abcc-f0a8bf282993.JPG)  
+
+19. ![fs19](https://user-images.githubusercontent.com/26553608/151133279-f45f7290-f1ea-4e67-8c71-b524e3f8b9e3.JPG)  
+
+20. ![fs20](https://user-images.githubusercontent.com/26553608/151133488-26b388b2-d4b2-4f86-9667-d38044d9654a.JPG)
+
+
+
 
 
 
