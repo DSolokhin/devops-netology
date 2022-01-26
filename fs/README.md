@@ -41,7 +41,10 @@ fsutil sparse setrange test.nul 0 10000000000
 12. root@vagrant:~# mkdir /tmp/new  
     root@vagrant:~# mount /dev/vg1/lvol0 /tmp/new  
     
-13. ![fs13](https://user-images.githubusercontent.com/26553608/151130208-e7a2a9a0-5955-49f9-a514-483b49015e81.JPG)
+13. ![fs13](https://user-images.githubusercontent.com/26553608/151130208-e7a2a9a0-5955-49f9-a514-483b49015e81.JPG)  
+
+14. ![fs14](https://user-images.githubusercontent.com/26553608/151130512-7fc4d83e-8c4e-4a11-865c-717349c0d1a7.JPG)
+
 
 
 
