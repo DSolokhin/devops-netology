@@ -30,13 +30,19 @@ fsutil sparse setrange test.nul 0 10000000000
     Logical volume "lvol0" created.  
     
 11. root@vagrant:~# mkfs.ext4 /dev/vg1/lvol0  
-mke2fs 1.45.5 (07-Jan-2020)  
-Creating filesystem with 25600 4k blocks and 25600 inodes  
+    mke2fs 1.45.5 (07-Jan-2020)  
+    Creating filesystem with 25600 4k blocks and 25600 inodes  
 
-Allocating group tables: done  
-Writing inode tables: done  
-Creating journal (1024 blocks): done  
-Writing superblocks and filesystem accounting information: done  
+    Allocating group tables: done  
+    Writing inode tables: done  
+    Creating journal (1024 blocks): done  
+    Writing superblocks and filesystem accounting information: done  
+
+12. root@vagrant:~# mkdir /tmp/new  
+    root@vagrant:~# mount /dev/vg1/lvol0 /tmp/new  
+    
+13. 
+
 
 
    
