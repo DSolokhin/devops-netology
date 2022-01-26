@@ -3,7 +3,7 @@ fsutil file createnew test.nul 10000000000
 fsutil sparse setflag test.nul  
 fsutil sparse setrange test.nul 0 10000000000  
 
-2. 
+2. Файлы с жесткими ссылками имеют ту же информацию inode и набор разрешений что и у исходного файла, права на хард ссылки изменяются при изменении прав исходного файла.    
 
 3. ![alt text](https://github.com/DSolokhin/devops-netology/blob/master/fs/fs3.JPG)  
  
