@@ -43,7 +43,19 @@ fsutil sparse setrange test.nul 0 10000000000
     
 13. ![fs13](https://user-images.githubusercontent.com/26553608/151130208-e7a2a9a0-5955-49f9-a514-483b49015e81.JPG)  
 
-14. ![fs14](https://user-images.githubusercontent.com/26553608/151130512-7fc4d83e-8c4e-4a11-865c-717349c0d1a7.JPG)
+14. ![fs14](https://user-images.githubusercontent.com/26553608/151130512-7fc4d83e-8c4e-4a11-865c-717349c0d1a7.JPG)  
+
+15. ![fs15](https://user-images.githubusercontent.com/26553608/151130855-03503d6c-4b6e-4d9e-ab8f-607fe6f5eb45.JPG)  
+
+16. root@vagrant:~# pvmove /dev/md1  
+  /dev/md1: Moved: 16.00%  
+  /dev/md1: Moved: 100.00%  
+  
+17. mdadm /dev/md0 -f /dev/sdb1  
+    ![fs17](https://user-images.githubusercontent.com/26553608/151132490-b8feb84c-4b0d-480c-ab61-96c66a56888d.JPG)
+
+
+
 
 
 
