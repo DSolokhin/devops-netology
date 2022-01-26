@@ -19,6 +19,11 @@ fsutil sparse setrange test.nul 0 10000000000
 7. mdadm --create --verbose /dev/md1 -l 0 -n 2 /dev/sd{b2,c2}  
    ![fs7](https://user-images.githubusercontent.com/26553608/151127143-3306fd6c-6c42-426c-bf30-c37e59228cb6.JPG)
 
+8. root@vagrant:~# pvcreate /dev/md0 /dev/md1  
+  Physical volume "/dev/md0" successfully created.  
+  Physical volume "/dev/md1" successfully created.  
+  
+9. 
 
    
 
