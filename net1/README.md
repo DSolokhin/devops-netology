@@ -40,7 +40,13 @@ filename
   5.  Сети 192я, 89, 217, 188, 108, 216  
       AS: AS59693, AS20485, AS15169  
       
-  6. ![3](https://user-images.githubusercontent.com/26553608/152977345-d0e0efae-fbb4-4248-89f5-9571a85fa850.jpg)
+  6.  
+     ![3](https://user-images.githubusercontent.com/26553608/152977345-d0e0efae-fbb4-4248-89f5-9571a85fa850.jpg)  
+     
+  7. dns.google.             79      IN      *A       8.8.4.4*  
+     dns.google.             79      IN      *A       8.8.8.8*  
+     
+  8. google.dns.in-addr.arpa.  PTR  
 
   
       
