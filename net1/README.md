@@ -31,5 +31,14 @@ X-Firefox-Spdy: h2
 filename  
 	/Img/teams/teams-illo-free-sidebar-promo.svg  
   
-  ![2](https://user-images.githubusercontent.com/26553608/152972683-09b8257f-f042-46cf-9a8a-9bd86ef2612d.jpg)
+  ![2](https://user-images.githubusercontent.com/26553608/152972683-09b8257f-f042-46cf-9a8a-9bd86ef2612d.jpg)  
+  
+  3.  Мой IP: 89.22.52.252  
+      Провайдер: Intronex  
+      AS: AS59693  
+      
+  4. 
+  
+      
+
 
