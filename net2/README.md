@@ -16,5 +16,20 @@ _gateway (192.168.0.1) at 28:ee:52:59:82:d4 [ether] on wlp2s0
       netmask 255.255.255.0  
       vlan_raw_device eth0  
       
-4. 
+4. LAG – агрегация портов (bond).  
+   /etc/network/interfaces  
+   auto bond0  
+
+iface bond0 inet static  
+    address 10.31.1.5  
+    netmask 255.255.255.0  
+    network 10.31.1.0  
+    gateway 10.31.1.254  
+    bond-slaves eth0 eth1  
+    bond-mode active-backup  
+    bond-miimon 100  
+    bond-downdelay 200  
+    bond-updelay 200  
+    
+ 5. 
    
