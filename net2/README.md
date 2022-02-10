@@ -8,4 +8,13 @@
    solo@solo-20424:~/net2$ arp -a  
 _gateway (192.168.0.1) at 28:ee:52:59:82:d4 [ether] on wlp2s0  
 
-3. 
+3. VLAN - виртуальное разделение коммутатора. В linux устанавливается пакет vlan.  
+   vi /etc/network/interfaces  
+   auto vlan1400  
+   iface vlan1400 inet static  
+      address 192.168.1.1  
+      netmask 255.255.255.0  
+      vlan_raw_device eth0  
+      
+4. 
+   
