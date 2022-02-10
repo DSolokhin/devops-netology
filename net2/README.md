@@ -39,7 +39,7 @@ mode=6 (balance-alb)
 
   Привер бондинг конфига:  
    etc/netplan    
-      bonds:  
+       bonds:  
          bond0:  
             dhcp4: no  
             interfaces: [enp0s3, enp0s4]  
