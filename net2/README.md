@@ -39,13 +39,13 @@ mode=6 (balance-alb)
 
   Привер бондинг конфига:  
    etc/netplan    
-   bonds:  
-    bond0:  
-      dhcp4: no  
-      interfaces: [enp0s3, enp0s4]  
-      parameters:   
-        mode: 802.3ad  
-        mii-monitor-interval: 1  
+      bonds:  
+         bond0:  
+            dhcp4: no  
+            interfaces: [enp0s3, enp0s4]  
+            parameters:   
+               mode: 802.3ad  
+               mii-monitor-interval: 1  
     
  5. В сети с маской /29 - 8 адресов.  
      
