@@ -53,4 +53,11 @@ mode=6 (balance-alb)
     
  6. Взять диапазон 100.64.0.0 — 100.127.255.255 с маской 255.192.0.0 (/10), решением будут подсети /26 по 64 хоста  
     
-![1](https://user-images.githubusercontent.com/26553608/153428684-a4f82e7b-fe15-4454-b513-5219522508b4.jpg)
+![1](https://user-images.githubusercontent.com/26553608/153428684-a4f82e7b-fe15-4454-b513-5219522508b4.jpg)  
+
+7. Windows  это arp -a  
+   Чтобы очистить ARP-кэш, необходимо выполнить команду: netsh interface ip delete arpcache    
+   В Linux arp есть в пакете net-tools  
+   solo@solo-20424:~/net2$ arp  
+Address                  HWtype  HWaddress           Flags Mask            Iface
+_gateway                 ether   28:ee:52:59:82:d4   C                     wlp2s0
