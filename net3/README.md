@@ -22,7 +22,7 @@ Password:
    ![route](https://user-images.githubusercontent.com/26553608/154031792-4f650907-39e9-4740-a3b0-cfaa766703a6.JPG)  
    
 
-Статические маршруты на примере Cloud интервейсов в Еве
+Статические маршруты на примере Cloud интерфейсов в Еве
 ```
 /etc/network/interfaces
 iface eth8 inet manual
