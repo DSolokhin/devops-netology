@@ -41,6 +41,13 @@ iface pnet9 inet static
     bridge_ports eth9
     bridge_stp off
 ```
+![r2](https://user-images.githubusercontent.com/26553608/154044161-c8613a57-51bd-4710-9918-873f1d47df33.JPG)
+
+3. ![3](https://user-images.githubusercontent.com/26553608/154046573-b0daa80e-1322-4163-bb4f-51863a5aa9e6.JPG)
+У меня в данно примере используют протоколы tcp приложения:  
+Вебсервер Apache на 80 порту, СУБД MySQL на 3306, ssh подключение на 22 порту.  
+
+
 
 
    
