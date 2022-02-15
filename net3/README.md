@@ -50,7 +50,8 @@ iface pnet9 inet static
 4.  ss -lu  
     У меня например по протоколу UDP на 123 порту NTP сервер времени.  
     
-5. 
+5. ![My_home](https://user-images.githubusercontent.com/26553608/154058506-d860ceb8-a9ec-452e-8917-a64cf485c846.jpg)
+
 
 
 
