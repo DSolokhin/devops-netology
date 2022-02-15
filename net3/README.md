@@ -12,3 +12,15 @@ Login: solo
 Password: 
 
 ```
+
+2. ```
+   sudo modprobe -v dummy
+   lsmod | grep dummy
+   ifconfig -a | grep dummy
+   ip addr add 192.168.1.150/24 dev dummy0
+   ip ro add 172.16.1.0/24 via 192.168.250.1
+   ip ro add 192.168.1.0/24 via 192.168.250.1
+   ```
+   ![route](https://user-images.githubusercontent.com/26553608/154031792-4f650907-39e9-4740-a3b0-cfaa766703a6.JPG)
+
+   
