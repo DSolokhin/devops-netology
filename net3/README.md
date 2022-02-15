@@ -52,7 +52,8 @@ iface pnet9 inet static
     
 5. Небольшая схема моей домашней сети:  
 
-![My_home](https://user-images.githubusercontent.com/26553608/154058506-d860ceb8-a9ec-452e-8917-a64cf485c846.jpg)
+![My_home](https://user-images.githubusercontent.com/26553608/154059728-2bca314d-db06-404b-9525-ecb3ae5f4e96.jpg)
+
 
 
 
