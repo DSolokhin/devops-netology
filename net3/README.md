@@ -1,17 +1,7 @@
-1. Не удалось подключиться ни к одному публичному маршрутизатору, пробовал даже напрямую с микротика.  
-```
-[solo@CentralOffice] > system telnet route-views.routeviews.org
-Connecting to 128.223.51.103
-telnet: connect() failed:  Connection timed out
+1. Сработало:  
+![route](https://user-images.githubusercontent.com/26553608/154336085-64274985-5fed-4354-b443-a97e5e2fe98b.JPG)
 
-Welcome back!
-[solo@CentralOffice] > system telnet 172.16.1.1                
-Connecting to 172.16.1.1
-Connected to 172.16.1.1
-Login: solo
-Password: 
 
-```
 
 2. ```
    sudo modprobe -v dummy
