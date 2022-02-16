@@ -52,7 +52,12 @@ iface pnet9 inet static
     
 5. Небольшая схема моей домашней сети:  
 
-![My_home](https://user-images.githubusercontent.com/26553608/154059728-2bca314d-db06-404b-9525-ecb3ae5f4e96.jpg)
+![My_home](https://user-images.githubusercontent.com/26553608/154059728-2bca314d-db06-404b-9525-ecb3ae5f4e96.jpg)  
+
+В качестве доп задания установил себе на работе Netbox:
+
+![netbox](https://user-images.githubusercontent.com/26553608/154238056-b3723841-0be6-4541-a883-bca0e04c73fd.JPG)
+
 
 
 
