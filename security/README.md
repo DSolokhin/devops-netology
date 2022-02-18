@@ -23,6 +23,13 @@
    Подключился по ssh ключу:  
    ![ssl3](https://user-images.githubusercontent.com/26553608/154655000-314151c0-1320-4965-91f7-31e9f059ddc9.JPG)  
    
+ 6. Создал ssh конфиг с указанием переименованных ключей:  
+    ![ssl4](https://user-images.githubusercontent.com/26553608/154684255-b64cfa3d-1ce4-4298-9b45-fe7a03ca2995.JPG)  
+    Добавил в /etc/hosts сопаставление реального Ip с хостом, подключаемся по имени:  
+    ![ssl5](https://user-images.githubusercontent.com/26553608/154684577-a1e441ba-715d-4804-bb6a-f2931956e408.JPG)
+
+
+   
    
 
 
