@@ -26,7 +26,19 @@
  6. Создал ssh конфиг с указанием переименованных ключей:  
     ![ssl4](https://user-images.githubusercontent.com/26553608/154684255-b64cfa3d-1ce4-4298-9b45-fe7a03ca2995.JPG)  
     Добавил в /etc/hosts сопаставление реального Ip с хостом, подключаемся по имени:  
-    ![ssl5](https://user-images.githubusercontent.com/26553608/154684577-a1e441ba-715d-4804-bb6a-f2931956e408.JPG)
+    ![ssl5](https://user-images.githubusercontent.com/26553608/154684577-a1e441ba-715d-4804-bb6a-f2931956e408.JPG)  
+    
+  7. Собираем сто покетов в файл:
+     ```
+     root@vagrant:~# tcpdump -i any -c 100 -w 0001.pcap
+     tcpdump: listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
+     100 packets captured
+     107 packets received by filter
+     0 packets dropped by kernel
+     ```
+     Закидываю в шару и открываю в Wireshark в windows:  
+     ![ssl6](https://user-images.githubusercontent.com/26553608/154690345-cbe90331-ba1c-44a5-aa2f-270e6fe8be49.JPG)
+
 
 
    
