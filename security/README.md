@@ -8,8 +8,11 @@
 
 3.
 
-![cert](https://user-images.githubusercontent.com/26553608/154549084-b20f23fa-d7f7-4f60-9f66-a79076fc9974.jpg)
+![cert](https://user-images.githubusercontent.com/26553608/154549084-b20f23fa-d7f7-4f60-9f66-a79076fc9974.jpg)  
 
+4. Проверил несколько сайтов, уязвимостей не нашел
+
+![testssl](https://user-images.githubusercontent.com/26553608/154639172-671cbbef-113d-4691-8780-719e13f3c18f.JPG)
 
 
 
