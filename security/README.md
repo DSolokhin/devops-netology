@@ -28,7 +28,7 @@
     Добавил в /etc/hosts сопаставление реального Ip с хостом, подключаемся по имени:  
     ![ssl5](https://user-images.githubusercontent.com/26553608/154684577-a1e441ba-715d-4804-bb6a-f2931956e408.JPG)  
     
-  7. Собираем сто покетов в файл:
+  7. Собираем сто пакетов в файл:
      ```
      root@vagrant:~# tcpdump -i any -c 100 -w 0001.pcap
      tcpdump: listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
