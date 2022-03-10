@@ -95,5 +95,10 @@ done
 
 ### Ваш скрипт:
 ```bash
-???
+#!/bin/bash
+commitRegex='^([0-30]+|merge|hotfix)'
+if ! grep -qE "$commitRegex" "$1"; then
+    echo "сломал хук"
+    exit 1
+fi
 ```
