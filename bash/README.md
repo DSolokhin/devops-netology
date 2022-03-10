@@ -102,3 +102,5 @@ if ! grep -qE "$commitRegex" "$1"; then
     exit 1
 fi
 ```
+![hook](https://user-images.githubusercontent.com/26553608/157681574-70cb0dbd-72ee-4163-8f9a-bc58ed1db915.JPG)
+
