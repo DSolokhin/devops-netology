@@ -76,7 +76,17 @@ done
 
 ### Ваш скрипт:
 ```bash
-???
+cat list.txt |  while read output
+do
+    ping -t "$output" > /dev/null
+    if [ $? -eq 0 ]
+    then
+      continue
+    else
+      echo "$output is down" >> error.log
+      break
+    fi
+done
 ```
 
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
