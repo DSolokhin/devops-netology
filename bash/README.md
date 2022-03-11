@@ -95,7 +95,12 @@ done
 
 ### Ваш скрипт:
 ```bash
-
+#!/bin/bash
+commitRegex='^\[.{1,30}\]$'
+if ! grep -qE "$commitRegex" "$1"; then
+    echo "сломал хук"
+    exit 1
+fi
 ```
 
 
