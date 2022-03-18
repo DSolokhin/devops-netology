@@ -58,7 +58,10 @@ for result in result_os.split('\n'):
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+root@vagrant:~# ./pyscript.py
+/root/2.txt
+/root/test/4.txt
+
 ```
 
 ## Обязательная задача 3
