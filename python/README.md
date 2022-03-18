@@ -69,12 +69,28 @@ root@vagrant:~# ./pyscript.py
 
 ### Ваш скрипт:
 ```python
-???
+import os
+
+bash_command = ["git status"]
+result_os = os.popen(' && '.join(bash_command)).read()
+pdir = os.path.abspath(os.curdir)
+is_change = False
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print(pdir + '/' + prepare_result)
+bash_command = ["git rev-parse --show-toplevel"]
+result_rep = os.popen(' && '.join(bash_command)).read()
+print("Путь локального репозитория " + result_rep)
+
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+root@vagrant:~# ./pyscript.py
+/root/2.txt
+/root/test/4.txt
+Путь локального репозитория /root
 ```
 
 ## Обязательная задача 4
