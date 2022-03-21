@@ -98,8 +98,6 @@ root@vagrant:~# ./pyscript.py
 
 ### Ваш скрипт:
 ```python
-##!/usr/bin/env python3
-
 import socket as s
 import time as t
 import datetime as dt
