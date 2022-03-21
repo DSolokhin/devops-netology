@@ -98,12 +98,39 @@ root@vagrant:~# ./pyscript.py
 
 ### Ваш скрипт:
 ```python
-???
+##!/usr/bin/env python3
+
+import socket as s
+import time as t
+import datetime as dt
+
+i = 1
+wait = 2
+srv = {'drive.google.com':'0.0.0.0', 'mail.google.com':'0.0.0.0', 'google.com':'0.0.0.0'}
+init=0
+print(srv)
+while 1==1 :
+  for host in srv:
+    ip = s.gethostbyname(host)
+    if ip != srv[host]:
+      if i==1 and init !=1:
+        print(str(dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) +' [ERROR] ' + str(host) +' IP mistmatch: '+srv[host]+' '+ip)
+      srv[host]=ip
+  i+=1
+  if i >= 50 :
+    break
+  t.sleep(wait)
+
 ```
 
 ### Вывод скрипта при запуске при тестировании:
 ```
-???
+root@vagrant:~# ./pyscript.py
+{'drive.google.com': '0.0.0.0', 'mail.google.com': '0.0.0.0', 'google.com': '0.0.0.0'}
+2022-03-21 12:32:42 [ERROR] drive.google.com IP mistmatch: 0.0.0.0 173.194.220.194
+2022-03-21 12:32:42 [ERROR] mail.google.com IP mistmatch: 0.0.0.0 142.251.1.17
+2022-03-21 12:32:42 [ERROR] google.com IP mistmatch: 0.0.0.0 142.251.1.102
+
 ```
 
 ## Дополнительное задание (со звездочкой*) - необязательно к выполнению
