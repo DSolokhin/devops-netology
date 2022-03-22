@@ -72,7 +72,6 @@ with open(jconf, "w") as j_data:
 with open(yconf, "w") as y_data:
     y_data.write(yaml.dump(conf,explicit_start=True, explicit_end=True))?
 ```
-```
 ### Вывод скрипта при запуске при тестировании:
 ```
 drive.google.com - 142.251.1.194
