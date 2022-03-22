@@ -10,15 +10,15 @@
 ## Обязательная задача 1
 Мы выгрузили JSON, который получили через API запрос к нашему сервису:
 ```
-    { "info" : "Sample JSON output from our service\t",
+    { "info" : "Sample JSON output from our service",
         "elements" :[
             { "name" : "first",
             "type" : "server",
-            "ip" : 7175 
+            "ip" : "7.1.75" 
             }
             { "name" : "second",
             "type" : "proxy",
-            "ip : 71.78.22.43
+            "ip" : "71.78.22.43"
             }
         ]
     }
