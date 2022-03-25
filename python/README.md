@@ -70,18 +70,16 @@ root@vagrant:~# ./pyscript.py
 ### Ваш скрипт:
 ```python
 import os
+import sys
 
-bash_command = ["git status"]
+cmd = sys.argv[1]
+bash_command = ["cd "+cmd, "git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
-pdir = os.path.abspath(os.curdir)
-is_change = False
 for result in result_os.split('\n'):
-    if result.find('modified') != -1:
-        prepare_result = result.replace('\tmodified:   ', '')
-        print(pdir + '/' + prepare_result)
-bash_command = ["git rev-parse --show-toplevel"]
-result_rep = os.popen(' && '.join(bash_command)).read()
-print("Путь локального репозитория " + result_rep)
+    if result.find('изменено') != -1:
+        prepare_result = result.replace('\tизменено: ', '')
+        prepare_result = prepare_result.replace(' ', '') 
+        print(cmd+prepare_result)
 
 ```
 
@@ -90,7 +88,7 @@ print("Путь локального репозитория " + result_rep)
 root@vagrant:~# ./pyscript.py
 /root/2.txt
 /root/test/4.txt
-Путь локального репозитория /root
+
 ```
 
 ## Обязательная задача 4
