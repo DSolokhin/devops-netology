@@ -10,6 +10,11 @@
 
 ![3](https://user-images.githubusercontent.com/26553608/160424754-c4f198de-504f-413f-bf15-b40529a325eb.JPG)  
 
+Генерирую CA сертификат для example.com:  
+
+![4](https://user-images.githubusercontent.com/26553608/160426715-398e121f-a7d8-49e8-b610-0dd82944fcf0.JPG)
+
+
 
 
 
