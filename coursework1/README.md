@@ -157,7 +157,10 @@ $ sudo systemctl restart nginx
 ```
 8. Открываем домен в брузере на хостовой машине:  
 
-![8](https://user-images.githubusercontent.com/26553608/160608633-131463d6-6f8c-4d58-8338-f281896661f1.JPG)  
+![8](https://user-images.githubusercontent.com/26553608/160633481-677cb259-5ac1-424b-a29e-e8401037e00e.JPG)  
+
+9. 
+
 
 
 
