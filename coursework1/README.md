@@ -186,6 +186,7 @@ Select an editor.  To change later, run 'select-editor'.
 
 Choose 1-3 [1]: 1
 ```
+![10](https://user-images.githubusercontent.com/26553608/160643298-4fe3a9f1-40c4-4c76-9282-e6e46de52d17.JPG)
 
 
 
