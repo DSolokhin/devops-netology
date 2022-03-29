@@ -128,7 +128,12 @@ solo@solo:~$ curl -O localhost:8200/v1/pki_root_ca/ca
 
 ![5](https://user-images.githubusercontent.com/26553608/160559794-93451435-1826-408b-81ab-d56df3105700.JPG)  
 
-6. 
+6. Установил nginx:  
+
+![6](https://user-images.githubusercontent.com/26553608/160567806-9215e644-a9a3-4cfe-875c-1e7585b96dc9.JPG)  
+
+7. 
+
 
 
 
