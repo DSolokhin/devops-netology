@@ -171,6 +171,9 @@ cat vault.example.com.crt | jq -r .data.certificate > vault.example.com.crt.pem
 cat vault.example.com.crt | jq -r .data.issuing_ca >> vault.example.com.crt.pem
 cat vault.example.com.crt | jq -r .data.private_key > vault.example.com.crt.key
 ```
+![9](https://user-images.githubusercontent.com/26553608/160639244-14d028a0-6c1b-46aa-9971-2c87edc38ba4.JPG)  
+
+
  
 
 
