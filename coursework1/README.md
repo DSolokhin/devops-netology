@@ -145,10 +145,16 @@ $ sudo nano /etc/nginx/sites-available/vault.example.com
 
 ![7_1](https://user-images.githubusercontent.com/26553608/160606753-aa4640c7-c392-46d6-94ef-fbe25762f312.JPG)  
 
+Делаю ссылку на на новый домен:  
+```
+$ sudo ln -s /etc/nginx/sites-available/vault.example.com /etc/nginx/sites-enabled/
 
-
-
-
+```
+В nginx.conf раскомментировал server_names_hash_bucket_size  
+```
+$ sudo nginx -t
+$ sudo systemctl restart nginx
+```
 
 
 
