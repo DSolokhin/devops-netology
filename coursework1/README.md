@@ -132,7 +132,15 @@ solo@solo:~$ curl -O localhost:8200/v1/pki_root_ca/ca
 
 ![6](https://user-images.githubusercontent.com/26553608/160567806-9215e644-a9a3-4cfe-875c-1e7585b96dc9.JPG)  
 
-7. 
+7. Настраиваю https на примере созданного виртуального хоста vault.example.com в nginx:  
+
+```
+$ sudo mkdir -p /var/www/vault.example.com/html
+$ sudo chown -R $USER:$USER /var/www/vault.example.com/html
+$ sudo chmod -R 755 /var/www/vault.example.com
+$ sudo nano /var/www/vault.example.com/html/index.html
+$ sudo nano /etc/nginx/sites-available/vault.example.com
+```
 
 
 
