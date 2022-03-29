@@ -23,17 +23,17 @@ solo@solo:~$ vault secrets enable \
 Success! Enabled the pki secrets engine at: pki_root_ca/
 solo@solo:~$ vault write -format=json pki_root_ca/root/generate/internal \
 >     common_name="Root Certificate Authority" \
->     country="Russian Federation" \
->     locality="Moscow" \
+>     country="RF" \
+>     locality="Ramenskoe" \
 >     street_address="Red Square 1" \
->     postal_code="101000" \
+>     postal_code="140126" \
 >     organization="Horns and Hooves LLC" \
 >     ou="IT" \
 >     ttl="262800h" > pki-root-ca.json
 solo@solo:~$ cat pki-root-ca.json | jq -r .data.certificate > rootCA.pem
 solo@solo:~$ vault write pki_root_ca/config/urls \
->     issuing_certificates="http://vault.example.com:8200/v1/pki_root_ca/ca" \
->     crl_distribution_points="http://vault.example.com:8200/v1/pki_root_ca/crl"
+>     issuing_certificates="http://localhost:8200/v1/pki_root_ca/ca" \
+>     crl_distribution_points="http://localhost:8200/v1/pki_root_ca/crl"
 Success! Data written to: pki_root_ca/config/urls
 solo@solo:~$ vault secrets enable \
 >     -path=pki_int_ca \
@@ -43,20 +43,20 @@ solo@solo:~$ vault secrets enable \
 Success! Enabled the pki secrets engine at: pki_int_ca/
 solo@solo:~$ vault write -format=json pki_int_ca/intermediate/generate/internal \
 >    common_name="Intermediate CA" \
->    country="Russian Federation" \
->    locality="Moscow" \
+>    country="RF" \
+>    locality="Ramenskoe" \
 >    street_address="
 > Red Square 1
 > " \
->    postal_code="101000" \
+>    postal_code="140126" \
 >    organization="
 > Horns and Hooves LLC
 > " \
 >    ou="IT" \
 >    ttl="175200h" | jq -r '.data.csr' > pki_intermediate_ca.csr
 solo@solo:~$ vault write -format=json pki_root_ca/root/sign-intermediate csr=@pki_intermediate_ca.csr \
->    country="Russia Federation" \
->    locality="Moscow" \
+>    country="RF" \
+>    locality="Ramenskoe" \
 >    street_address="
 > Red Square 1
 > " \
@@ -71,16 +71,16 @@ solo@solo:~$ vault write pki_int_ca/intermediate/set-signed \
 >     certificate=@intermediateCA.cert.pem
 Success! Data written to: pki_int_ca/intermediate/set-signed
 solo@solo:~$ vault write pki_int_ca/config/urls \
->     issuing_certificates="http://vault.example.com:8200/v1/pki_int_ca/ca" \
->     crl_distribution_points="http://vault.example.com:8200/v1/pki_int_ca/crl"
+>     issuing_certificates="http://localhost:8200/v1/pki_int_ca/ca" \
+>     crl_distribution_points="http://localhost:8200/v1/pki_int_ca/crl"
 Success! Data written to: pki_int_ca/config/urls
 solo@solo:~$ vault write pki_int_ca/roles/example-dot-com-server \
->     country="Russia Federation" \
->     locality="Moscow" \
+>     country="RF" \
+>     locality="Ramenskoe" \
 >     street_address="
 > Red Square 1
 > " \
->     postal_code="101000" \
+>     postal_code="140126" \
 >     organization="
 > Horns and Hooves LLC
 > " \
@@ -102,33 +102,6 @@ solo@solo:~$ vault write pki_int_ca/roles/example-dot-com-server \
 >     ext_key_usage="ServerAuth" \
 >     require_cn=true
 Success! Data written to: pki_int_ca/roles/example-dot-com-server
-solo@solo:~$ vault write pki_int_ca/roles/example-dot-com-client \
->     country="Russia Federation" \
->     locality="Moscow" \
->     street_address="
-> Red Square 1
-> " \
->     postal_code="101000" \
->     organization="
-> Horns and Hooves LLC
-> " \
->     ou="IT" \
->     allow_subdomains=true \
->     max_ttl="87600h" \
->     key_bits="2048" \
->     key_type="rsa" \
->     allow_any_name=true \
->     allow_bare_domains=false \
->     allow_glob_domain=false \
->     allow_ip_sans=false \
->     allow_localhost=false \
->     client_flag=true \
->     server_flag=false \
->     enforce_hostnames=false \
->     key_usage="DigitalSignature" \
->     ext_key_usage="ClientAuth" \
->     require_cn=true
-Success! Data written to: pki_int_ca/roles/example-dot-com-client
 solo@solo:~$ vault write -format=json pki_int_ca/issue/example-dot-com-server \
 >     common_name="vault.example.com" \
 >     alt_names="vault.example.com" \
@@ -136,6 +109,13 @@ solo@solo:~$ vault write -format=json pki_int_ca/issue/example-dot-com-server \
 solo@solo:~$ cat vault.example.com.crt | jq -r .data.certificate > vault.example.com.crt.pem
 solo@solo:~$ cat vault.example.com.crt | jq -r .data.issuing_ca >> vault.example.com.crt.pem
 solo@solo:~$ cat vault.example.com.crt | jq -r .data.private_key > vault.example.com.crt.key
+```
+Сохраняю корневой сертификат по опублекованной ранее ссылке:  
+```
+solo@solo:~$ curl -O localhost:8200/v1/pki_root_ca/ca
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1095  100  1095    0     0  60833      0 --:--:-- --:--:-- --:--:-- 60833
 ```
 
 
