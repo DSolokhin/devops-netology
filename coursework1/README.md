@@ -173,8 +173,19 @@ cat vault.example.com.crt | jq -r .data.private_key > vault.example.com.crt.key
 ```
 ![9](https://user-images.githubusercontent.com/26553608/160639244-14d028a0-6c1b-46aa-9971-2c87edc38ba4.JPG)  
 
+10. Добавляю скрипт в крон, на выполнение например в 6 ч 10 мин 1го числа каждого месяца:  
 
- 
+```
+solo@solo:/etc/cron.monthly$ crontab -e
+no crontab for solo - using an empty one
+
+Select an editor.  To change later, run 'select-editor'.
+  1. /bin/nano        <---- easiest
+  2. /usr/bin/vim.tiny
+  3. /bin/ed
+
+Choose 1-3 [1]: 1
+```
 
 
 
