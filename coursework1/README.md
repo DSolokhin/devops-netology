@@ -115,7 +115,8 @@ solo@solo:~$ cat vault.example.com.crt | jq -r .data.certificate > vault.example
 solo@solo:~$ cat vault.example.com.crt | jq -r .data.issuing_ca >> vault.example.com.crt.pem
 solo@solo:~$ cat vault.example.com.crt | jq -r .data.private_key > vault.example.com.crt.key
 ```
-Сохраняю корневой сертификат по опублекованной ранее ссылке:  
+
+5. Сохраняю корневой сертификат по опубликованной ранее ссылке:  
 ```
 solo@solo:~$ curl -O localhost:8200/v1/pki_root_ca/ca
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -126,6 +127,8 @@ solo@solo:~$ curl -O localhost:8200/v1/pki_root_ca/ca
 Добавляю корневой в доверенные центры на хосте:  
 
 ![5](https://user-images.githubusercontent.com/26553608/160559794-93451435-1826-408b-81ab-d56df3105700.JPG)  
+
+6. 
 
 
 
