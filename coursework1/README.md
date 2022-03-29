@@ -10,6 +10,8 @@
 
 ![3](https://user-images.githubusercontent.com/26553608/160424754-c4f198de-504f-413f-bf15-b40529a325eb.JPG)  
 
+Создаем корневой центра сертификации, с генерацией сертификат на 30 дней (720 часов)  для домена vault.example.com:  
+
 ```
 solo@solo:~$ export VAULT_ADDR=http://127.0.0.1:8200
 solo@solo:~$ export PATH=$PATH:/home/solo
