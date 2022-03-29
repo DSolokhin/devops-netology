@@ -159,7 +159,19 @@ $ sudo systemctl restart nginx
 
 ![8](https://user-images.githubusercontent.com/26553608/160633481-677cb259-5ac1-424b-a29e-e8401037e00e.JPG)  
 
-9. 
+9. Скрипт для генерации сертификата на 30 дней:  
+
+```
+vault write -format=json pki_int_ca/issue/example-dot-com-server \
+  common_name="vault.example.com" \
+  alt_names="vault.example.com" \
+  ttl="720h" > vault.example.com.crt
+
+cat vault.example.com.crt | jq -r .data.certificate > vault.example.com.crt.pem
+cat vault.example.com.crt | jq -r .data.issuing_ca >> vault.example.com.crt.pem
+cat vault.example.com.crt | jq -r .data.private_key > vault.example.com.crt.key
+```
+ 
 
 
 
