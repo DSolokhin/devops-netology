@@ -141,6 +141,11 @@ $ sudo chmod -R 755 /var/www/vault.example.com
 $ sudo nano /var/www/vault.example.com/html/index.html
 $ sudo nano /etc/nginx/sites-available/vault.example.com
 ```
+Сам конфиг:  
+
+![7_1](https://user-images.githubusercontent.com/26553608/160606753-aa4640c7-c392-46d6-94ef-fbe25762f312.JPG)  
+
+
 
 
 
