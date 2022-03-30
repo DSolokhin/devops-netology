@@ -161,21 +161,14 @@ $ sudo systemctl restart nginx
 ![8](https://user-images.githubusercontent.com/26553608/160633481-677cb259-5ac1-424b-a29e-e8401037e00e.JPG)  
 
 9. Скрипт для генерации сертификата на 30 дней:  
+![script](https://user-images.githubusercontent.com/26553608/160823762-4d167e81-99b5-4ca9-9949-c696e8696741.JPG)  
+![gen](https://user-images.githubusercontent.com/26553608/160825285-8559ec88-678b-4081-975f-ab304a8b5720.JPG)
+![host](https://user-images.githubusercontent.com/26553608/160825310-e825fd40-7b34-4e1c-873c-07a71d2b6537.JPG)
 
-```
-vault write -format=json pki_int_ca/issue/example-dot-com-server \
-  common_name="vault.example.com" \
-  alt_names="vault.example.com" \
-  ttl="720h" > vault.example.com.crt
 
-cat vault.example.com.crt | jq -r .data.certificate > vault.example.com.crt.pem
-cat vault.example.com.crt | jq -r .data.issuing_ca >> vault.example.com.crt.pem
-cat vault.example.com.crt | jq -r .data.private_key > vault.example.com.crt.key
 
-cp -f /home/solo/vault.example.com.crt.pem /etc/nginx
-cp -f /home/solo/vault.example.com.crt.key /etc/nginx
-systemctl restart nginx
-```
+
+
  ![9](https://user-images.githubusercontent.com/26553608/160769520-2abf9ba8-5aca-45f8-838a-7520a09772d1.JPG)
 
 
