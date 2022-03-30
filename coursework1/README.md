@@ -168,6 +168,7 @@ $ sudo systemctl restart nginx
 
 Проверяю скрипт несколько раз с рестартом nginx  
 ![check](https://user-images.githubusercontent.com/26553608/160860730-4eb369c1-1605-4c50-93aa-d499420cab73.JPG)
+![host](https://user-images.githubusercontent.com/26553608/160861173-be188f60-15a5-47d1-b5b5-9d440634339f.JPG)
 
 
 
