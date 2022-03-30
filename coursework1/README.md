@@ -168,20 +168,8 @@ $ sudo systemctl restart nginx
 
 
 
-10. Добавляю скрипт в крон, на выполнение например в 6 ч 10 мин 1го числа каждого месяца:  
-
-```
-solo@solo:/etc/cron.monthly$ crontab -e
-no crontab for solo - using an empty one
-
-Select an editor.  To change later, run 'select-editor'.
-  1. /bin/nano        <---- easiest
-  2. /usr/bin/vim.tiny
-  3. /bin/ed
-
-Choose 1-3 [1]: 1
-```
-![10](https://user-images.githubusercontent.com/26553608/160643298-4fe3a9f1-40c4-4c76-9282-e6e46de52d17.JPG)
+10. Для проверки скрипта добавил в крон выполнение каждую минуту:  
+![cron](https://user-images.githubusercontent.com/26553608/160832454-1121b863-6f1f-4b50-9507-2792d982158d.JPG)
 
 
 
