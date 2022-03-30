@@ -160,7 +160,8 @@ $ sudo systemctl restart nginx
 
 ![8](https://user-images.githubusercontent.com/26553608/160633481-677cb259-5ac1-424b-a29e-e8401037e00e.JPG)  
 
-9. Скрипт для генерации сертификата на 30 дней:   
+9. Скрипт для генерации сертификата на 30 дней:  
+ vault login token=<token> 
  ![script](https://user-images.githubusercontent.com/26553608/160853091-c69f68d8-e498-47cf-8775-2679afdaa5fa.JPG)
 
 Проверяю скрипт несколько раз с рестартом nginx  
