@@ -169,8 +169,7 @@ $ sudo systemctl restart nginx
 
 
 
-10. Для проверки скрипта добавил в крон выполнение каждую минуту:  
-![cron](https://user-images.githubusercontent.com/26553608/160832454-1121b863-6f1f-4b50-9507-2792d982158d.JPG)
+10. 
 
 
 
