@@ -163,13 +163,16 @@ $ sudo systemctl restart nginx
 9. Скрипт для генерации сертификата на 30 дней:   
  ![script](https://user-images.githubusercontent.com/26553608/160853091-c69f68d8-e498-47cf-8775-2679afdaa5fa.JPG)
 
-  
+Проверяю скрипт несколько раз с рестартом nginx  
 ![gen](https://user-images.githubusercontent.com/26553608/160825285-8559ec88-678b-4081-975f-ab304a8b5720.JPG)
 ![host](https://user-images.githubusercontent.com/26553608/160825310-e825fd40-7b34-4e1c-873c-07a71d2b6537.JPG)
 
 
 
-10. 
+10. Пример задачи в cron с рестартом nginx:  
+
+![cron](https://user-images.githubusercontent.com/26553608/160855264-5de631d3-87ec-4a2e-8681-3814e2057c17.JPG)
+
 
 
 
