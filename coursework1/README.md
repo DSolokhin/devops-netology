@@ -11,9 +11,10 @@
 
 ![2](https://user-images.githubusercontent.com/26553608/160399106-b680c826-2e1f-4a87-b95b-44d51c1773a7.JPG)  
 
-Запускаю сервер в dev режиме в отдельном терминале:  
+Запускаю сервер:    
+![vault_run](https://user-images.githubusercontent.com/26553608/160794593-22d758ac-a42d-4dc9-afa6-fe744e7f154e.JPG)
 
-![3](https://user-images.githubusercontent.com/26553608/160424754-c4f198de-504f-413f-bf15-b40529a325eb.JPG)  
+ 
 
 4. Создал центр сертификации, настройка PKI, корневой сертификат, промежуточный, роль для серверов, генерация сертификата на 30 дней (720 часов)  для домена vault.example.com (jq уже установлена):  
 
