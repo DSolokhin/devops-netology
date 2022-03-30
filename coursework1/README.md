@@ -170,8 +170,13 @@ vault write -format=json pki_int_ca/issue/example-dot-com-server \
 cat vault.example.com.crt | jq -r .data.certificate > vault.example.com.crt.pem
 cat vault.example.com.crt | jq -r .data.issuing_ca >> vault.example.com.crt.pem
 cat vault.example.com.crt | jq -r .data.private_key > vault.example.com.crt.key
+
+cp -f /home/solo/vault.example.com.crt.pem /etc/nginx
+cp -f /home/solo/vault.example.com.crt.key /etc/nginx
+systemctl restart nginx
 ```
-![9](https://user-images.githubusercontent.com/26553608/160639244-14d028a0-6c1b-46aa-9971-2c87edc38ba4.JPG)  
+ ![9](https://user-images.githubusercontent.com/26553608/160769520-2abf9ba8-5aca-45f8-838a-7520a09772d1.JPG)
+
 
 10. Добавляю скрипт в крон, на выполнение например в 6 ч 10 мин 1го числа каждого месяца:  
 
