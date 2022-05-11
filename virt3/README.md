@@ -28,7 +28,6 @@ solo@solo-vm:~$ sudo docker ps
 CONTAINER ID   IMAGE     COMMAND            CREATED          STATUS          PORTS     NAMES
 5e18d391c046   centos    "sleep infinity"   29 seconds ago   Up 27 seconds             focused_haslett
 solo@solo-vm:~$ sudo docker exec -it 5e18d391c046 bash
-[root@5e18d391c046 /]# ll
 [root@5e18d391c046 /]# ls -lhs
 total 52K
    0 lrwxrwxrwx   1 root root    7 Nov  3  2020 bin -> usr/bin
