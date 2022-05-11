@@ -69,17 +69,27 @@ root@vagrant:~# ./pyscript.py
 
 ### Ваш скрипт:
 ```python
+#!/usr/bin/env python3
+#Почему-то не отправился коммит с решением в прошлый раз, не заметил сразу.
 import os
 import sys
 
 cmd = sys.argv[1]
 bash_command = ["cd "+cmd, "git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
+<<<<<<< HEAD
+=======
+#is_change = False
+>>>>>>> 1bce86c4bef0ad2d5a745d3dee70dfbd21f595c4
 for result in result_os.split('\n'):
     if result.find('изменено') != -1:
         prepare_result = result.replace('\tизменено: ', '')
         prepare_result = prepare_result.replace(' ', '') 
         print(cmd+prepare_result)
+<<<<<<< HEAD
+=======
+#        break
+>>>>>>> 1bce86c4bef0ad2d5a745d3dee70dfbd21f595c4
 
 ```
 
