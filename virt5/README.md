@@ -10,7 +10,12 @@
 
 ![node](https://user-images.githubusercontent.com/26553608/168236002-b2f159a6-4855-4ccd-8672-2d94c68501dd.PNG)  
 
-**Задача 2** 
+**Задача 3**  
+
+![services](https://user-images.githubusercontent.com/26553608/168236859-750d2411-beb0-4f10-ab4d-bbcc4db2df42.PNG)  
+
+
+
 
 
 
