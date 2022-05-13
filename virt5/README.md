@@ -14,6 +14,22 @@
 
 ![services](https://user-images.githubusercontent.com/26553608/168236859-750d2411-beb0-4f10-ab4d-bbcc4db2df42.PNG)  
 
+**Задача 4**  
+
+```
+[centos@node01 ~]$ sudo -i
+[root@node01 ~]# docker swarm update --autolock=true
+Swarm updated.
+To unlock a swarm manager after it restarts, run the `docker swarm unlock`
+command and provide the following key:
+
+    SWMKEY-1-XAQhe6lA0wlWIroUx7nHWggeVBCzj9fnezlyUpHwxzs
+
+Please remember to store this key in a password manager, since without it you
+will not be able to restart the manager.
+```
+Это docker secret для доступа к логам swarm, команда автоблокировка по умолчанию, для анлока потребуется этот ключ и его нужно сохранить.  
+
 
 
 
