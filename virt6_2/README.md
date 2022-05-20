@@ -1,5 +1,5 @@
 **Задача 1**  
-
+```
 solo@solo-vm:~$ sudo docker pull postgres:12
 [sudo] пароль для solo: 
 12: Pulling from library/postgres
@@ -87,3 +87,4 @@ PostgreSQL init process complete; ready for start up.
 2022-05-20 07:46:59.062 UTC [1] LOG:  background worker "logical replication launcher" (PID 72) exited with exit code 1
 2022-05-20 07:46:59.071 UTC [67] LOG:  shutting down
 2022-05-20 07:46:59.763 UTC [1] LOG:  database system is shut down
+```
