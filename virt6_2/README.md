@@ -87,4 +87,10 @@ PostgreSQL init process complete; ready for start up.
 2022-05-20 07:46:59.062 UTC [1] LOG:  background worker "logical replication launcher" (PID 72) exited with exit code 1
 2022-05-20 07:46:59.071 UTC [67] LOG:  shutting down
 2022-05-20 07:46:59.763 UTC [1] LOG:  database system is shut down
+solo@solo-vm:~$ sudo docker ps
+[sudo] пароль для solo: 
+CONTAINER ID   IMAGE         COMMAND                  CREATED              STATUS              PORTS                                       NAMES
+b7264209b59d   postgres:12   "docker-entrypoint.s…"   About a minute ago   Up About a minute   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   pg-docker
+solo@solo-vm:~$ pgadmin
+
 ```
