@@ -55,11 +55,13 @@ solo@solo-vm:~$ sudo docker exec -t pg-docker pg_dump -U postgres test_db -f /va
 solo@solo-vm:~$ sudo docker stop b7264209b59d
 b7264209b59d
 solo@solo-vm:~$ sudo docker run --rm --name pg-docker2 -e POSTGRES_PASSWORD=postgres -ti -p 5432:5432
-"docker run" requires at least 1 argument.  
+"docker run" requires at least 1 argument. 
+```
+
 ![6_1](https://user-images.githubusercontent.com/26553608/169829919-7f036fba-d419-41c3-b6b0-12aa326fd229.PNG)
-
+```
 solo@solo-vm:~$ sudo docker exec -i pg-docker2 psql -U postgres -d test_db -f /var/lib/postgresql/data/dump_test.sql
-
+```
 
 
 
