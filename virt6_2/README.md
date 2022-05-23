@@ -39,6 +39,19 @@ update  clients set заказ = 5 where id = 3;
 
 ![3_2](https://user-images.githubusercontent.com/26553608/169806915-4efdd8aa-0864-4fd2-b605-e9e9563a9e32.JPG)  
 
+**Задача 5**  
+
+![5_1](https://user-images.githubusercontent.com/26553608/169808051-22540ba7-2aa9-49e3-9a37-76c0bac0c7f4.JPG)  
+
+![5_2](https://user-images.githubusercontent.com/26553608/169808078-309c550a-a073-470d-accf-035547c31fa9.JPG)  
+
+Первый запрос показывает стоимость запроса, показывает шаги и связи таблиц.  
+
+Воторой запрос показывает стоимость запроса, и фильтрацию по полю заказ и этот план оптимальней.  
+
+
+
+
 
 
 
