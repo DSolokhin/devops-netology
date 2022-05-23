@@ -49,6 +49,20 @@ update  clients set заказ = 5 where id = 3;
 
 Воторой запрос показывает стоимость запроса, и фильтрацию по полю заказ и этот план оптимальней.  
 
+**Задача 6**  
+```
+solo@solo-vm:~$ sudo docker exec -t pg-docker pg_dump -U postgres test_db -f /var/lib/postgresql/data/dump_test.sql
+solo@solo-vm:~$ sudo docker stop b7264209b59d
+b7264209b59d
+solo@solo-vm:~$ sudo docker run --rm --name pg-docker2 -e POSTGRES_PASSWORD=postgres -ti -p 5432:5432
+"docker run" requires at least 1 argument.  
+
+
+
+solo@solo-vm:~$ sudo docker exec -i pg-docker2 psql -U postgres -d test_db -f /var/lib/postgresql/data/dump_test.sql
+
+
+
 
 
 
