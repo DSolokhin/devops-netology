@@ -26,7 +26,20 @@ solo@solo-vm:~$ pgadmin3
 insert into orders VALUES (1, 'Шоколад', 10), (2, 'Принтер', 3000), (3, 'Книга', 500), (4, 'Монитор', 7000), (5, 'Гитара', 4000);
 insert into clients VALUES (1, 'Иванов Иван Иванович', 'USA'), (2, 'Петров Петр Петрович', 'Canada'), (3, 'Иоганн Себастьян Бах', 'Japan'), (4, 'Ронни Джеймс Дио', 'Russia'), (5, 'Ritchie Blackmore', 'Russia');
 ```
-![row](https://user-images.githubusercontent.com/26553608/169805987-e1d9e54b-9250-47d4-893a-5f49115d5ad2.JPG)
+![row](https://user-images.githubusercontent.com/26553608/169805987-e1d9e54b-9250-47d4-893a-5f49115d5ad2.JPG)  
+
+**Задача 4**  
+
+```
+update  clients set заказ = 3 where id = 1;
+update  clients set заказ = 4 where id = 2;
+update  clients set заказ = 5 where id = 3;
+```
+![3_1](https://user-images.githubusercontent.com/26553608/169806885-4de38d47-78cb-4061-bc4f-e4ec9d597975.JPG)  
+
+![3_2](https://user-images.githubusercontent.com/26553608/169806915-4efdd8aa-0864-4fd2-b605-e9e9563a9e32.JPG)  
+
+
 
 
 
