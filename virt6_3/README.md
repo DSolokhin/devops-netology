@@ -37,11 +37,36 @@ mysql> show tables;
 | orders            |
 +-------------------+
 1 row in set (0.00 sec)
+
 mysql> select count(*) from orders where price>300;
 +----------+
 | count(*) |
 +----------+
 |        1 |
 +----------+
+1 row in set (0.00 sec)
+```
+
+**Задача 2**  
+
+```
+mysql> create user 'test'@'localhost' 
+    ->     identified with mysql_native_password by 'test-pass' 
+    ->     with max_queries_per_hour 100
+    ->     password expire interval 180 day 
+    ->     failed_login_attempts 3 
+    ->     attribute '{"fname": "James","lname": "Pretty"}';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant select on test_db. to test@'localhost';
+mysql> flush privileges;
+
+
+mysql> select * from INFORMATION_SCHEMA.USER_ATTRIBUTEs where user = 'test';
++------+-----------+---------------------------------------+
+| USER | HOST      | ATTRIBUTE                             |
++------+-----------+---------------------------------------+
+| test | localhost | {"fname": "James", "lname": "Pretty"} |
++------+-----------+---------------------------------------+
 1 row in set (0.00 sec)
 ```
