@@ -26,3 +26,15 @@ Uptime:			31 min 56 sec
 Threads: 2  Questions: 31  Slow queries: 0  Opens: 140  Flush tables: 3  Open tables: 59  Queries per second avg: 0.016
 --------------
 ```
+`mysql> connect
+Connection id:    37
+Current database: test_db
+
+mysql> show tables;
++-------------------+
+| Tables_in_test_db |
++-------------------+
+| orders            |
++-------------------+
+1 row in set (0.00 sec)
+```
