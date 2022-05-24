@@ -25,8 +25,8 @@ Uptime:			31 min 56 sec
 
 Threads: 2  Questions: 31  Slow queries: 0  Opens: 140  Flush tables: 3  Open tables: 59  Queries per second avg: 0.016
 --------------
-```
-`mysql> connect
+
+mysql> connect
 Connection id:    37
 Current database: test_db
 
