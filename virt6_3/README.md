@@ -91,4 +91,14 @@ mysql> SHOW PROFILES;
 ```
 mysql> ALTER TABLE orders ENGINE = MyISAM;
 
+mysql> SHOW PROFILES;
++----------+------------+-----------------------------------------+
+| Query_ID | Duration   | Query                                   |
++----------+------------+-----------------------------------------+
+|        1 | 0.00302500 | show table status where name = 'orders' |
+|        2 | 0.00016250 | SET profiling = 1                       |
+|        3 | 0.00162975 | show table status where name = 'orders' |
++----------+------------+-----------------------------------------+
+3 rows in set, 1 warning (0.00 sec)
+
 
