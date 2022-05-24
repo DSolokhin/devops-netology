@@ -70,3 +70,20 @@ mysql> select * from INFORMATION_SCHEMA.USER_ATTRIBUTEs where user = 'test';
 +------+-----------+---------------------------------------+
 1 row in set (0.00 sec)
 ```
+
+**Задача 3**  
+
+```
+mysql> SET profiling = 1;
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+mysql> SHOW PROFILES;
++----------+------------+-----------------------------------------+
+| Query_ID | Duration   | Query                                   |
++----------+------------+-----------------------------------------+
+|        1 | 0.00302500 | show table status where name = 'orders' |
+|        2 | 0.00016250 | SET profiling = 1                       |
++----------+------------+-----------------------------------------+
+2 rows in set, 1 warning (0.00 sec)
+
+
