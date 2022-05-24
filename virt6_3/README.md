@@ -89,16 +89,14 @@ mysql> SHOW PROFILES;
 ![6_3](https://user-images.githubusercontent.com/26553608/170005698-07112c7c-3b27-4d3f-8b54-b9d8edb6ca09.JPG)
 
 ```
-mysql> ALTER TABLE orders ENGINE = MyISAM;
-
 mysql> SHOW PROFILES;
 +----------+------------+-----------------------------------------+
 | Query_ID | Duration   | Query                                   |
 +----------+------------+-----------------------------------------+
-|        1 | 0.00302500 | show table status where name = 'orders' |
-|        2 | 0.00016250 | SET profiling = 1                       |
-|        3 | 0.00162975 | show table status where name = 'orders' |
+|        6 | 0.04736000 | ALTER TABLE orders ENGINE = MyISAM      |
+|        7 | 0.07909850 | ALTER TABLE orders ENGINE = InnoDB      |
 +----------+------------+-----------------------------------------+
-3 rows in set, 1 warning (0.00 sec)
+7 rows in set, 1 warning (0.00 sec)
+```
 
 
