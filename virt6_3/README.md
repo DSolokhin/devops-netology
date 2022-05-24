@@ -88,4 +88,7 @@ mysql> SHOW PROFILES;
 ```
 ![6_3](https://user-images.githubusercontent.com/26553608/170005698-07112c7c-3b27-4d3f-8b54-b9d8edb6ca09.JPG)
 
+```
+mysql> ALTER TABLE orders ENGINE = MyISAM;
+
 
