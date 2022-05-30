@@ -58,76 +58,58 @@ postgres=# select avg_width from pg_stats where tablename='orders';
 
 **Задача 3**  
 
-Можно, для этого достаточно из предложенной транзакции достаточно убрать манипуляции с переименованием и копированием данных
+```
+BEGIN;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+ALTER TABLE orders RENAME TO orders_copy;
+CREATE TABLE orders (
+    id integer NOT NULL,
+    title character varying(80) NOT NULL,
+    price integer DEFAULT 0)
+	PARTITION BY RANGE (price);
+CREATE TABLE orders_more499 PARTITION OF orders
+    FOR VALUES FROM (500) TO (2147483647);
+CREATE TABLE orders_less500 PARTITION OF orders
+    FOR VALUES FROM (0) TO (500);
+INSERT INTO orders (id, title, price) SELECT * FROM orders_copy;
+ALTER SEQUENCE orders_id_seq OWNED BY public.orders.id;
+ALTER TABLE ONLY orders ALTER COLUMN id SET DEFAULT nextval('public.orders_id_seq'::regclass);
+DROP TABLE orders_copy;
+COMMIT;
+```
+
+test_database=# insert into orders (title, price) values ('test less 499', 300), ('test more 500', 600);
+INSERT 0 2
+
+test_database=# select * FROM orders;
+  1 | War and peace        |   100
+  3 | Adventure psql time  |   300
+  4 | Server gravity falls |   300
+  5 | Log gossips          |   123
+  7 | Me and my bash-pet   |   499
+  9 | test less 499        |   300
+  2 | My little database   |   500
+  6 | WAL never lies       |   900
+  8 | Dbiezdmin            |   501
+ 10 | test more 500        |   600
+
+test_database=# select * FROM orders_less500;
+  1 | War and peace        |   100
+  3 | Adventure psql time  |   300
+  4 | Server gravity falls |   300
+  5 | Log gossips          |   123
+  7 | Me and my bash-pet   |   499
+  9 | test less 499        |   300
+
+test_database=# select * FROM orders_more499;
+  2 | My little database |   500
+  6 | WAL never lies     |   900
+  8 | Dbiezdmin          |   501
+ 10 | test more 500      |   600
 
 ```
-select * from payment 
+Можно, для этого из предложенной транзакции достаточно убрать запросы с переименованием и копированием данных    
 
-SELECT DISTINCT DATE_TRUNC('month', payment_date) 
-FROM payment
-
-
-CREATE TABLE payment_05_2005 
-(CHECK (DATE_TRUNC('month', payment_date) = '01.05.2005')) INHERITS (payment);
-
-CREATE TABLE payment_06_2005 
-(CHECK (DATE_TRUNC('month', payment_date) = '01.06.2005')) INHERITS (payment);
-
-CREATE TABLE payment_07_2005 
-(CHECK (DATE_TRUNC('month', payment_date) = '01.07.2005')) INHERITS (payment);
-
-CREATE TABLE payment_08_2005 
-(CHECK (DATE_TRUNC('month', payment_date) = '01.08.2005')) INHERITS (payment);
-
-CREATE INDEX payment_05_2005_date_idx ON payment_05_2005 (CAST(payment_date as date));
-
-CREATE TRIGGER payment_insert_tg
-BEFORE insert ON payment
-FOR EACH ROW EXECUTE FUNCTION payment_insert_tg();
-
-drop trigger payment_insert_tg on payment
-
-CREATE OR REPLACE FUNCTION payment_insert_tg() RETURNS TRIGGER AS $$
-DECLARE new_month date; new_month_part text; partition_table_name text;
-BEGIN
-  new_month = DATE_TRUNC('month', new.payment_date)::date;
-  new_month_part = CONCAT(SPLIT_PART(new_month::text, '-', 2), '_', SPLIT_PART(new_month::text, '-', 1));
-  partition_table_name = FORMAT('payment_%s', new_month_part); --payment_05_2005
-  IF (TO_REGCLASS(partition_table_name) IS NULL) THEN
-    EXECUTE FORMAT(
-      'CREATE TABLE %I ('
-      '  CHECK (DATE_TRUNC(''month'', payment_date) = %L)'
-      ') INHERITS (payment);'
-      , partition_table_name, new_month);
-    EXECUTE FORMAT(
-      'CREATE INDEX %1$s_date_idx ON %1$I (CAST(payment_date as date));'
-      , partition_table_name);
-  END IF;
- 	--if TG_OP = 'INSERT' then
-  EXECUTE FORMAT('INSERT INTO %I VALUES ($1.*)', partition_table_name) USING NEW;
- 	--elseif TG_OP = 'UPDATE' then update
-  RETURN NULL;
-END; $$ LANGUAGE plpgsql;
-
-explain analyze
-select * from payment 
-
-WITH cte AS (  
-	DELETE FROM ONLY payment RETURNING *)
-INSERT INTO payment   
-SELECT * FROM cte;
-
-create table new_payment (like payment)
-
-select * from payment_02_2006
-
-insert into payment
-select * from new_payment
-
-select * from new_payment
-
-delete from payment
-```
 
 **Задача 4**  
 
