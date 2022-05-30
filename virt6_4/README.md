@@ -134,5 +134,22 @@ delete from payment
 ```
 root@89cc3da2e6d8:/#pg_dump -d test_database > /pgvolume/db_dump.sql
 ```
-
+Нужно добавить параметр UNIQUE в описание столбца таблицы:  
+```
+CREATE TABLE public.orders (
+    id integer DEFAULT NULL NOT NULL,
+    title character varying(80) NOT NULL UNIQUE,
+    price integer DEFAULT 0
+);
+CREATE TABLE public.orders_less500 (
+    id integer DEFAULT NULL NOT NULL,
+    title character varying(80) NOT NULL UNIQUE,
+    price integer DEFAULT 0
+);
+CREATE TABLE public.orders_more499 (
+    id integer DEFAULT NULL NOT NULL,
+    title character varying(80) NOT NULL UNIQUE,
+    price integer DEFAULT 0
+);
+```
 
