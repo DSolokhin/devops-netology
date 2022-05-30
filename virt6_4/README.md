@@ -77,7 +77,7 @@ ALTER TABLE ONLY orders ALTER COLUMN id SET DEFAULT nextval('public.orders_id_se
 DROP TABLE orders_copy;
 COMMIT;
 ```
-
+```
 test_database=# insert into orders (title, price) values ('test less 499', 300), ('test more 500', 600);
 INSERT 0 2
 
