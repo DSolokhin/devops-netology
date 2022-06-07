@@ -112,3 +112,21 @@ Enter host password for user 'elastic':
   "active_shards_percent_as_number" : 47.368421052631575
 }
 ```
+Cтатус Yellow в данном случае показывает, что репликам некуда реплицироваться.  
+```
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic -X DELETE https://localhost:9200/ind-1?pretty
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic -X DELETE https://localhost:9200/ind-2?pretty
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic -X DELETE https://localhost:9200/ind-3?pretty
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+```
