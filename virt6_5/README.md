@@ -33,3 +33,7 @@ USER elasticsearch
 CMD ["/usr/sbin/init"]
 CMD ["/elasticsearch/bin/elasticsearch"]
 ```
+https://hub.docker.com/r/dsolokhin/elasticsearch
+```
+docker pull dsolokhin/elasticsearch
+```
