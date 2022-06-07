@@ -38,7 +38,7 @@ https://hub.docker.com/r/dsolokhin/elasticsearch
 docker pull dsolokhin/elasticsearch
 ```
 ```
-elasticsearch@4341d2ae6021:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic https://localhost:9200
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic https://localhost:9200
 Enter host password for user 'elastic':
 {
   "name" : "4341d2ae6021",
