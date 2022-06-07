@@ -2,26 +2,34 @@
 
 ```
 solo@solo-vm:~$ cat Dockerfile
-FROM centos:centos7
+FROM centos:7
+ENV PATH=/usr/lib:/usr/lib/jvm/jre-11/bin:$PATH
 
-RUN yum -y install wget; yum clean all && \
-        groupadd --gid 1000 elasticsearch && \
-        adduser --uid 1000 --gid 1000 --home /usr/share/elasticsearch elasticsearch && \
-        mkdir /var/lib/elasticsearch/ && \
-        chown -R 1000:1000 /var/lib/elasticsearch/
+RUN yum install java-11-openjdk -y 
+RUN yum install wget -y 
 
-USER 1000:1000
-
-WORKDIR /usr/share/elasticsearch
-
-ENV EL_VER=8.0.1
-
-RUN wget -q https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${EL_VER}-linux-x86_64.tar.gz && \
-        tar -xzf elasticsearch-${EL_VER}-linux-x86_64.tar.gz && \
-        cp -rp elasticsearch-${EL_VER}/* ./ && \
-        rm -rf elasticsearch-${EL_VER}*
-
-COPY ./config/elasticsearch.yml /usr/share/elasticsearch/config/
-
-EXPOSE 9200
+RUN wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.2.2-linux-x86_64.tar.gz \
+    && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.2.2-linux-x86_64.tar.gz.sha512 
+RUN yum install perl-Digest-SHA -y 
+RUN shasum -a 512 -c elasticsearch-8.2.2-linux-x86_64.tar.gz.sha512 \ 
+    && tar -xzf elasticsearch--8.2.2-linux-x86_64.tar.gz \
+    && yum upgrade -y
+    
+ADD elasticsearch.yml /elasticsearch/config/
+ENV JAVA_HOME=/elasticsearch/jdk/
+ENV ES_HOME=/elasticsearch-8.2.2
+RUN groupadd elasticsearch \
+    && useradd -g elasticsearch elasticsearch
+    
+RUN mkdir /var/lib/logs \
+    && chown elasticsearch:elasticsearch /var/lib/logs \
+    && mkdir /var/lib/data \
+    && chown elasticsearch:elasticsearch /var/lib/data \
+    && chown -R elasticsearch:elasticsearch /elasticsearch/
+RUN mkdir /elasticsearch/snapshots &&\
+    chown elasticsearch:elasticsearch /elasticsearch/snapshots
+    
+USER elasticsearch
+CMD ["/usr/sbin/init"]
+CMD ["/elasticsearch/bin/elasticsearch"]
 ```
