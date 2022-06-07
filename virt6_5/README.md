@@ -147,8 +147,38 @@ health status index uuid                   pri rep docs.count docs.deleted store
 green  open   test  8rEcEkc7S6GXZJ2B1_ii0w   1   0          0            0       225b           225b
 ```
 ```
-[elasticsearch@6955d3023d93 snapshots$ ls -lah /usr/share/elasticsearch/snapshots
+elasticsearch@6955d3023d93 snapshots$ ls -lah /usr/share/elasticsearch/snapshots
 total 16K
-drwxrwxr-x. 2 elasticsearch elasticsearch 4.0K Mar  9 11:31 .
-drwx------. 1 elasticsearch elasticsearch 4.0K Mar  9 11:24 ..
+drwxrwxr-x. 2 elasticsearch elasticsearch 4.0K Jun  7 14:31 .
+drwx------. 1 elasticsearch elasticsearch 4.0K Jun  7 14:24 ..
+```
+```
+elasticsearch@6955d3023d93 snapshots$ ls -lah /usr/share/elasticsearch/snapshots
+total 52K
+drwxrwxr-x. 3 elasticsearch elasticsearch 4.0K Jun  7 14:48 .
+drwx------. 1 elasticsearch elasticsearch 4.0K Jun  7 14:24 ..
+-rw-r--r--. 1 elasticsearch elasticsearch 1.1K Jun  7 14:48 index-0
+-rw-r--r--. 1 elasticsearch elasticsearch    8 Jun  7 14:48 index.latest
+drwxr-xr-x. 5 elasticsearch elasticsearch 4.0K Jun  7 14:48 indices
+-rw-r--r--. 1 elasticsearch elasticsearch  18K Jun  7 14:48 meta-YCONu7qjRemBquBUkalV2g.dat
+-rw-r--r--. 1 elasticsearch elasticsearch  396 Jun  7 14:48 snap-YCONu7qjRemBquBUkalV2g.dat
+```
+```
+elasticsearch@6955d3023d93 snapshots$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic https://localhost:9200/_cat/indices?v
+Enter host password for user 'elastic':
+health status index  uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test-2 sPegl4shSY-fY0soZ2eEkw   1   0          0            0       225b           225b
+```
+```
+elasticsearch@6955d3023d93 snapshots$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic -X POST https://localhost:9200/_snapshot/netology_backup/snapshot_09_03_2022/_restore?pretty
+Enter host password for user 'elastic':
+{
+  "accepted" : true
+}
+
+elasticsearch@6955d3023d93 snapshots$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic https://localhost:9200/_cat/indices?v
+Enter host password for user 'elastic':
+health status index  uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test-2 sPegl4shSY-fY0soZ2eEkw   1   0          0            0       225b           225b
+green  open   test   cIFjzz5mQ2O8Ng5mLlKuCQ   1   0          0            0       225b           225b
 ```
