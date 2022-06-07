@@ -91,3 +91,24 @@ green  open   ind-1 1VfO1znuTRumq1hHz4tb4w   1   0          0            0      
 yellow open   ind-2 34VbW6fGTKq0eJ0I6MATeQ   2   1          0            0       450b           450b
 yellow open   ind-3 pbcaY8SFQgKUiVyBO6ykZw   4   2          0            0       900b           900b
 ```
+```
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic https://localhost:9200/_cluster/health?pretty
+Enter host password for user 'elastic':
+{
+  "cluster_name" : "netology_test",
+  "status" : "yellow",
+  "timed_out" : false,
+  "number_of_nodes" : 1,
+  "number_of_data_nodes" : 1,
+  "active_primary_shards" : 9,
+  "active_shards" : 9,
+  "relocating_shards" : 0,
+  "initializing_shards" : 0,
+  "unassigned_shards" : 10,
+  "delayed_unassigned_shards" : 0,
+  "number_of_pending_tasks" : 0,
+  "number_of_in_flight_fetch" : 0,
+  "task_max_waiting_in_queue_millis" : 0,
+  "active_shards_percent_as_number" : 47.368421052631575
+}
+```
