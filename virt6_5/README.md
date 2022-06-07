@@ -130,3 +130,25 @@ Enter host password for user 'elastic':
   "acknowledged" : true
 }
 ```
+
+**Задача 3**  
+
+```
+elasticsearch@6955d3023d93:~$  curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic -X PUT https://localhost:9200/_snapshot/netology_backup?pretty -H 'Content-Type: application/json' -d' { "type": "fs", "settings": { "location": "/usr/share/elasticsearch/snapshots"}}'
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true
+}
+```
+```
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic https://localhost:9200/_cat/indices?v
+Enter host password for user 'elastic':
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   test  8rEcEkc7S6GXZJ2B1_ii0w   1   0          0            0       225b           225b
+```
+```
+[elasticsearch@6955d3023d93 snapshots$ ls -lah /usr/share/elasticsearch/snapshots
+total 16K
+drwxrwxr-x. 2 elasticsearch elasticsearch 4.0K Mar  9 11:31 .
+drwx------. 1 elasticsearch elasticsearch 4.0K Mar  9 11:24 ..
+```
