@@ -58,3 +58,36 @@ Enter host password for user 'elastic':
   "tagline" : "You Know, for Search"
 }
 ```
+
+**Задача 2**  
+```
+elasticsearch@6955d3023d93:~$ curl -X PUT localhost:9200/ind-1 -H 'Content-Type: application/json' -d'{ "settings": { "number_of_shards": 1,  "number_of_replicas": 0 }}'
+curl: (52) Empty reply from server
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic -X PUT https://localhost:9200/ind-1?pretty -H 'Content-Type: application/json' -d'{ "settings": { "index": { "number_of_shards": 1, "number_of_replicas": 0 }}}'
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "index" : "ind-1"
+}
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic -X PUT https://localhost:9200/ind-2?pretty -H 'Content-Type: application/json' -d'{ "settings": { "index": { "number_of_shards": 2, "number_of_replicas": 1 }}}'
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "index" : "ind-2"
+}
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic -X PUT https://localhost:9200/ind-3?pretty -H 'Content-Type: application/json' -d'{ "settings": { "index": { "number_of_shards": 4, "number_of_replicas": 2 }}}'
+Enter host password for user 'elastic':
+{
+  "acknowledged" : true,
+  "shards_acknowledged" : true,
+  "index" : "ind-3"
+}
+elasticsearch@6955d3023d93:~$ curl --cacert /usr/share/elasticsearch/config/certs/http_ca.crt -u elastic https://localhost:9200/_cat/indices?v
+Enter host password for user 'elastic':
+health status index uuid                   pri rep docs.count docs.deleted store.size pri.store.size
+green  open   ind-1 1VfO1znuTRumq1hHz4tb4w   1   0          0            0       225b           225b
+yellow open   ind-2 34VbW6fGTKq0eJ0I6MATeQ   2   1          0            0       450b           450b
+yellow open   ind-3 pbcaY8SFQgKUiVyBO6ykZw   4   2          0            0       900b           900b
+```
