@@ -7,6 +7,7 @@ solo@solo-vm:~/go$
 ```
 **Задача 2**  
 
+![z2](https://user-images.githubusercontent.com/26553608/176388590-f1a36015-57c2-40e8-b777-8af0be7f4117.PNG)
 
 
 **Задача 3**  
