@@ -2334,5 +2334,3 @@ yandex_vpc_network.diploma-vpc-network: Destroying... [id=enpc8v6r2dqntbv6i254]
 yandex_vpc_network.diploma-vpc-network: Destruction complete after 0s
 
 Destroy complete! Resources: 21 destroyed.
-reyson@reyson-VirtualBox:~/diploma-ds-master/terraform/stage$ 
-
