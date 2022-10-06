@@ -543,7 +543,7 @@ ___
 
 </details>
 
-2 Зададим переменные в проекте GitLab
+2. Зададим переменные в проекте GitLab
 
 3. Настроили [.gitlab-ci.yml](CI-gitlab/gitlab-ci.yml)
 
@@ -689,7 +689,7 @@ ___
 
 4. Все репозитории рекомендуется хранить на одном из ресурсов ([github.com](https://github.com)
    или [gitlab.com](https://gitlab.com)).
-   - **УКАЗАТЬ ССЫЛКУ НА РЕПО**
+   - https://github.com/DSolokhin/devops-netology/tree/master/Diplom_DS
 
 ---
 
