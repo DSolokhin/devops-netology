@@ -1,0 +1,4 @@
+#!/bin/bash
+certbot -q renew
+nginx -s reload
+date > /tmp/letsencrypt_last_cron_execution

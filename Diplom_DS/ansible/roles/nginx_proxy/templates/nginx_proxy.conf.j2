@@ -1,0 +1,167 @@
+########################### host ###########################
+
+server {
+  listen              80;
+  listen              [::]:80;
+  server_name  {{ domain_name }};
+
+  location ^~ /.well-known/acme-challenge/ {
+    default_type "text/plain";
+    root       /var/www/letsencrypt-challenge;
+  }
+
+  location = /.well-known/acme-challenge/ {
+    return 404;
+  }
+
+  location / {
+  root /var/www/html;
+  index index.html index.htm index.nginx-debian.html;
+  }
+}
+
+server {
+  listen               443 ssl;
+  server_name          {{ domain_name }};
+
+  access_log           /var/log/nginx/{{ domain_name }}_access_log;
+  error_log            /var/log/nginx/{{ domain_name }}_error_log;
+  ssl_certificate      /etc/letsencrypt/live/{{ domain_name }}/fullchain.pem;
+  ssl_certificate_key  /etc/letsencrypt/live/{{ domain_name }}/privkey.pem;
+
+
+  location / {
+  root /var/www/html;
+  index index.html index.htm index.nginx-debian.html;
+  }
+}
+
+
+
+########################### Wordpress upstream ###########################
+
+upstream www {
+    server www.{{ domain_name }}:80;
+}
+
+server {
+   listen 443 ssl;
+   server_name www.{{ domain_name }};
+
+   access_log           /var/log/nginx/www.{{ domain_name }}_access_log;
+   error_log            /var/log/nginx/www.{{ domain_name }}_error_log;
+   ssl_certificate      /etc/letsencrypt/live/www.{{ domain_name}}/fullchain.pem;
+   ssl_certificate_key  /etc/letsencrypt/live/www.{{ domain_name }}/privkey.pem;
+
+
+   location / {
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_pass         http://{{ ip_node04 }};
+   }
+}
+
+########################### Gitlab upstream ###########################
+
+upstream gitlab{
+    server gitlab.{{ domain_name }}:80;
+}
+
+server {
+   listen 443 ssl;
+   server_name gitlab.{{ domain_name }};
+
+   access_log           /var/log/nginx/gitlab.{{ domain_name }}_access_log;
+   error_log            /var/log/nginx/gitlab.{{ domain_name }}_error_log;
+   ssl_certificate      /etc/letsencrypt/live/gitlab.{{ domain_name }}/fullchain.pem;
+   ssl_certificate_key  /etc/letsencrypt/live/gitlab.{{ domain_name }}/privkey.pem;
+
+
+   location / {
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_pass         http://{{ ip_node05 }};
+   }
+}
+
+
+########################### Grafana upstream ###########################
+
+upstream grafana{
+    server grafana.{{ domain_name }}:3000;
+}
+
+server {
+   listen 443 ssl;
+   server_name grafana.{{ domain_name }};
+
+   access_log           /var/log/nginx/grafana.{{ domain_name }}_access_log;
+   error_log            /var/log/nginx/grafana.{{ domain_name }}_error_log;
+   ssl_certificate      /etc/letsencrypt/live/grafana.{{ domain_name }}/fullchain.pem;
+   ssl_certificate_key  /etc/letsencrypt/live/grafana.{{ domain_name }}/privkey.pem;
+
+
+   location / {
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_pass         http://{{ ip_node07 }}:3000;
+   }
+}
+
+
+
+########################### Prometheus upstream ###########################
+
+upstream prometheus{
+    server prometheus.{{ domain_name }}:9090;
+}
+
+server {
+   listen 443 ssl;
+   server_name prometheus.{{ domain_name }};
+
+   access_log           /var/log/nginx/prometheus.{{ domain_name }}_access_log;
+   error_log            /var/log/nginx/prometheus.{{ domain_name }}_error_log;
+   ssl_certificate      /etc/letsencrypt/live/prometheus.{{ domain_name }}/fullchain.pem;
+   ssl_certificate_key  /etc/letsencrypt/live/prometheus.{{ domain_name }}/privkey.pem;
+
+
+   location / {
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_pass         http://{{ ip_node07 }}:9090;
+   }
+}
+
+########################### Alert Manager upstream ###########################
+
+upstream alertmanager{
+    server alertmanager.{{ domain_name }}:9093;
+}
+
+server {
+   listen 443 ssl;
+   server_name alertmanager.{{ domain_name }};
+
+   access_log           /var/log/nginx/alertmanager.{{ domain_name }}_access_log;
+   error_log            /var/log/nginx/alertmanager.{{ domain_name }}_error_log;
+   ssl_certificate      /etc/letsencrypt/live/alertmanager.{{ domain_name }}/fullchain.pem;
+   ssl_certificate_key  /etc/letsencrypt/live/alertmanager.{{ domain_name }}/privkey.pem;
+
+
+   location / {
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+        proxy_pass         http://{{ ip_node07 }}:9093;
+   }
+}

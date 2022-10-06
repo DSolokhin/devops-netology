@@ -1,0 +1,7 @@
+---
+nginx:
+  www_home: /var/www
+  configuration_root: /etc/nginx
+  webserver:
+    user: www-data
+    group: www-data

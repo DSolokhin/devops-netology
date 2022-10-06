@@ -1,0 +1,23 @@
+---
+nginx_tls:
+  initialize_tls: true
+  domain_list:
+    - "{{ domain_name }}"
+    - www.{{ domain_name }}
+    - gitlab.{{ domain_name }}
+    - grafana.{{ domain_name }}
+    - prometheus.{{ domain_name }}
+    - alertmanager.{{ domain_name }}
+  ssl_root: /etc/letsencrypt/live
+  challenge:
+    root: "{{ nginx.www_home }}/letsencrypt-challenge"
+    configuration: "{{ nginx.configuration_root }}/sites-available/001-letsencrypt-challenge"
+    configuration_enabled: "{{ nginx.configuration_root }}/sites-enabled/001-letsencrypt-challenge"
+  snippets_folder: /etc/nginx/snippets
+  renewal:
+    cron_expression: 0 */12 * * *
+
+letsencrypt:
+  contact_email: admin@{{ domain_name }}
+
+

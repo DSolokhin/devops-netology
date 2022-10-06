@@ -1,0 +1,4 @@
+---
+base:
+  download_folder: /var/downloads
+  scripts_folder: /usr/local/bin

@@ -1,0 +1,20 @@
+---
+- name: "Ensure proxy endpoint is configured"
+  template:
+    src: nginx_proxy.conf.j2
+    dest: "{{ nginx_proxy.proxypath.configuration }}"
+  become: yes
+  register: proxyEndpointConfigured
+
+- name: "Ensure proxy is enabled"
+  file:
+    src: "{{ nginx_proxy.proxypath.configuration }}"
+    dest: "{{ nginx_proxy.proxypath.configuration_enabled }}"
+    state: link
+  become: yes
+  register: proxyEndpointEnabled
+
+- name: "Ensure Nginx is restarted immediately when necessary"
+  service: name=nginx state=restarted
+  become: yes
+  when: proxyEndpointConfigured.changed or proxyEndpointEnabled.changed

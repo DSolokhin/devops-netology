@@ -1,0 +1,50 @@
+---
+- name: Set gitlab_repository_installation_script_url
+  set_fact:
+    gitlab_repository_installation_script_url: "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh"
+
+
+- name: Download GitLab repository installation script.
+  get_url:
+    url: "{{ gitlab_repository_installation_script_url }}"
+    dest: /tmp/gitlab_install_repository.sh
+
+- name: Install GitLab repository.
+  command: bash /tmp/gitlab_install_repository.sh
+
+- name: Install GitLab runner
+  apt:
+    name: "gitlab-runner"
+    state: present
+
+- name: Register GitLab runner
+  become: true
+  command: gitlab-runner register -n --url http://gitlab --registration-token {{ gitlab_runner }} --executor shell --description "Shell Runner" --tag-list deployment
+
+
+- name: Add GitLab runner user to sudoers
+  user:
+    name: gitlab-runner
+    groups: sudo
+    append: yes
+    state: present
+
+- name: Allow gitlab-runner user to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^gitlab-runner'
+    line: 'gitlab-runner ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Modify StrictHostKeyChecking for no handshaking
+  lineinfile:
+    path: /etc/ssh/ssh_config
+    line: '    StrictHostKeyChecking no'
+
+- name: Create SSH key for user gitlab-runner
+  user:
+    name: gitlab-runner
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa

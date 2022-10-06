@@ -1,0 +1,11 @@
+---
+- name: "Check that no previous letsencrypt certificates exist"
+  stat: path=/etc/letsencrypt
+  register: letsencryptInstalled
+
+- name: "CREATING certificates are PRODUCTIVE"
+  raw: certbot certonly --webroot -w {{ nginx_tls.challenge.root }} -d {{ item }} --email {{ letsencrypt.contact_email }} --agree-tos --non-interactive
+  become: yes
+  when:
+    - letsencryptInstalled.stat.exists
+  loop: "{{ nginx_tls.domain_list }}"

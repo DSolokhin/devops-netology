@@ -1,0 +1,5 @@
+---
+nginx_proxy:
+  proxypath:
+    configuration: "{{ nginx.configuration_root }}/sites-available/proxy"
+    configuration_enabled: "{{ nginx.configuration_root }}/sites-enabled/proxy"

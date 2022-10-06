@@ -1,0 +1,53 @@
+---
+- name: Installing Mysql and dependencies
+  package:
+     name: "{{ item }}"
+     state: present
+     update_cache: yes
+  loop:
+    - mysql-server
+    - mysql-client
+    - python3-mysqldb
+    - libmysqlclient-dev
+  become: yes
+
+- name: UP mysql service
+  service:
+     name: mysql
+     state: started
+     enabled: yes
+
+- name: Remove all anonim accounts
+  mysql_user:
+    name: ''
+    host_all: yes
+    state: absent
+
+- name: Remove default database
+  mysql_db:
+    name: test
+    state: absent
+
+- name: Creating data base
+  mysql_db:
+     name: "{{ db_name }}"
+     state: present
+
+- name: Creating mysql user
+  mysql_user:
+     name: "{{ db_user }}"
+     password: "{{ db_pass }}"
+     priv: "{{ db_name }}.*:ALL"
+     host: '%'
+     state: present
+
+- name: Enable remote access
+  lineinfile:
+     path: /etc/mysql/mysql.conf.d/mysqld.cnf
+     regexp: '^bind-address'
+     line: 'bind-address = 0.0.0.0'
+     backup: yes
+  notify:
+    - Restart mysql
+
+- import_tasks: repl.yml

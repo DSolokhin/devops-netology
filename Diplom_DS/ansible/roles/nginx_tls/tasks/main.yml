@@ -1,0 +1,65 @@
+---
+- name: "Ensure letsencrypt challenge root exists"
+  file:
+    path: "{{ nginx_tls.challenge.root }}"
+    state: directory
+    owner: "{{ nginx.webserver.user }}"
+    group: "{{ nginx.webserver.group }}"
+    mode: 0755
+  become: yes
+
+- name: "Ensure letsencrypt challenge endpoint is configured"
+  template:
+    src: nginx_letsencrypt_challenge.conf.j2
+    dest: "{{ nginx_tls.challenge.configuration }}"
+  become: yes
+  register: challengeEndpointConfigured
+
+- name: "Ensure letsencrypt challenge endpoint is enabled"
+  file:
+    src: "{{ nginx_tls.challenge.configuration }}"
+    dest: "{{ nginx_tls.challenge.configuration_enabled }}"
+    state: link
+  become: yes
+  register: challengeEndpointEnabled
+
+- name: "Ensure Nginx is restarted immediately when necessary"
+  service: name=nginx state=restarted
+  become: yes
+  when: challengeEndpointConfigured.changed or challengeEndpointEnabled.changed
+
+- name: "Ensure letsencrypt certbot is installed"
+  apt:
+    name: certbot
+    state: present
+  become: yes
+
+- include: initialize_letsencrypt.yml
+  when: nginx_tls.initialize_tls
+
+- name: "Ensure default certbot cron is disabled"
+  file:
+    dest: /etc/cron.d/certbot
+    state: absent
+  become: yes
+
+- name: "Ensure script for certificate renewal is present"
+  template:
+    src: letsencrypt_renew_certs.sh.j2
+    dest: "{{ base.scripts_folder }}/letsencrypt_renew_certs.sh"
+    mode: 0755
+  become: yes
+
+- name: "Ensure cron job for certificate renewal is present"
+  template:
+    src: letsencrypt_renewal_cron.j2
+    dest: /etc/cron.d/letsencrypt_renewal_cron
+    mode: 0755
+  become: yes
+
+- name: "Ensure default webroot is disabled"
+  file:
+    path: "{{ nginx.configuration_root }}/sites-enabled/001-letsencrypt-challenge"
+    state: absent
+  become: yes
+

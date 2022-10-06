@@ -1,0 +1,9 @@
+ansible-playbook playbook.yml
+
+ansible -m ping all
+
+ansible-playbook playbook.yml --syntax-check
+
+terraform destroy -auto-approve
+terraform apply -auto-approve
+

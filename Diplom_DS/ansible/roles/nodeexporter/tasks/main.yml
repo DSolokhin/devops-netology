@@ -1,0 +1,58 @@
+---
+- name: Create node exporter group
+  group: 
+    name: "{{ node_exporter_group }}"
+    state: present
+
+- name: Create node exporter user
+  user:
+    name: "{{ node_exporter_user }}"
+    group: "{{ node_exporter_group }}"
+    shell: /usr/sbin/nologin
+    system: true
+    create_home: false
+
+- name: Create directory for config node exporter
+  file:
+    path: "{{ node_exporter_dir_conf }}"
+    state: directory
+    owner: "{{ node_exporter_user }}"
+    group: "{{ node_exporter_group }}"
+
+- name: Download and unzip node exporter
+  unarchive:
+    src: "https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-amd64.tar.gz"
+    dest: /tmp/
+    remote_src: yes
+    validate_certs: no
+
+- name: Move src to final destination
+  copy:
+    src: "/tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/node_exporter"
+    dest: "{{ node_exporter_bin }}"
+    owner: "{{ node_exporter_user }}"
+    group: "{{ node_exporter_group }}"
+    mode: 0755
+    remote_src: yes
+
+- name: Delete tmp files
+  file:
+    path: /tmp/node_exporter-{{ node_exporter_version }}.linux-amd64/
+    state: absent
+
+- name: Install node exporter as service
+  template:
+    src: node_exporter.service.j2
+    dest: /etc/systemd/system/node_exporter.service
+    owner: root
+    group: root
+    mode: 0755
+  notify: Restart node exporter
+
+- meta: flush_handlers
+
+- name: Service always startup - systemd
+  systemd:
+    name: node_exporter
+    state: started
+    enabled: yes

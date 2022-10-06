@@ -1,0 +1,9 @@
+---
+- name: "Ensure download folder exists"
+  file:
+    path: "{{ base.download_folder }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  become: yes

@@ -1,0 +1,73 @@
+---
+- name: Add config file primary
+  template:
+    src=templates/replica.cnf
+    dest=/etc/mysql/mysql.conf.d/primary.cnf
+  when:
+    - mysql_replication_role == 'primary'
+    - mysql_replication_user is defined
+    - (mysql_replication_primary | length) > 0
+  notify:
+    - Restart mysql
+
+- name: Add config file replica
+  template:
+    src=templates/replica.cnf
+    dest=/etc/mysql/mysql.conf.d/replica.cnf
+  when:
+    - mysql_replication_role == 'replica'
+    - (mysql_replication_primary | length) > 0
+  notify:
+    - Restart mysql
+
+- name: Ensure replication user exists on primary
+  mysql_user:
+    name: "{{ mysql_replication_user }}"
+    host: "%"
+    password: "{{ mysql_replication_user_password }}"
+    priv: "*.*:REPLICATION SLAVE,REPLICATION CLIENT"
+    state: present
+  when:
+    - mysql_replication_role == 'primary'
+    - mysql_replication_user is defined
+    - (mysql_replication_primary | length) > 0
+
+- name: Checking status of replica replication
+  mysql_replication:
+    mode: getreplica
+  register: replica
+  when:
+    - mysql_replication_role == 'replica'
+    - (mysql_replication_primary | length) > 0
+
+- name: Checking status of primary replication
+  mysql_replication:
+    mode: getprimary
+  delegate_to: "{{ mysql_replication_primary }}"
+  register: primary
+  when:
+    - (replica.Is_Replica is defined and not replica.Is_Replica) or (replica.Is_Replica is not defined and replica is failed)
+    - mysql_replication_role == 'replica'
+    - (mysql_replication_primary | length) > 0
+
+- name: Config replication on the replica
+  mysql_replication:
+    mode: changeprimary
+    master_host: "{{ mysql_replication_primary }}"
+    master_user: "{{ mysql_replication_user }}"
+    master_password: "{{ mysql_replication_user_password }}"
+    master_log_file: "{{ primary.File }}"
+    master_log_pos: "{{ primary.Position }}"
+  when:
+    - (replica.Is_Replica is defined and not replica.Is_Replica) or (replica.Is_Replica is not defined and replica is failed)
+    - mysql_replication_role == 'replica'
+    - mysql_replication_user is defined
+    - (mysql_replication_primary | length) > 0
+
+- name: Start mysql replication
+  mysql_replication:
+    mode: startreplica
+  when:
+    - (replica.Is_Replica is defined and not replica.Is_Replica) or (replica.Is_Replica is not defined and replica is failed)
+    - mysql_replication_role == 'replica'
+    - (mysql_replication_primary | length) > 0

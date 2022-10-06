@@ -1,0 +1,2338 @@
+$ terraform apply -auto-approve
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # local_file.inventory will be created
+  + resource "local_file" "inventory" {
+      + content              = (known after apply)
+      + directory_permission = "0777"
+      + file_permission      = "0777"
+      + filename             = "../../ansible/inventory"
+      + id                   = (known after apply)
+    }
+
+  # null_resource.playbook will be created
+  + resource "null_resource" "playbook" {
+      + id = (known after apply)
+    }
+
+  # null_resource.wait will be created
+  + resource "null_resource" "wait" {
+      + id = (known after apply)
+    }
+
+  # yandex_compute_instance.node01 will be created
+  + resource "yandex_compute_instance" "node01" {
+      + allow_stopping_for_update = true
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + hostname                  = "nginx"
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        }
+      + name                      = "nginx-node01"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = "ru-central1-a"
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd84mnpg35f7s7b0f5lg"
+              + name        = "root-node01"
+              + size        = 10
+              + snapshot_id = (known after apply)
+              + type        = "network-ssd"
+            }
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = "192.168.100.11"
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = true
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 2
+          + memory        = 2
+        }
+
+      + scheduling_policy {
+          + preemptible = (known after apply)
+        }
+    }
+
+  # yandex_compute_instance.node02 will be created
+  + resource "yandex_compute_instance" "node02" {
+      + allow_stopping_for_update = true
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + hostname                  = "db01"
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        }
+      + name                      = "db01-node02"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = "ru-central1-b"
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd8qps171vp141hl7g9l"
+              + name        = "root-node02"
+              + size        = 10
+              + snapshot_id = (known after apply)
+              + type        = "network-ssd"
+            }
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = "192.168.110.12"
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = (known after apply)
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 4
+          + memory        = 4
+        }
+
+      + scheduling_policy {
+          + preemptible = (known after apply)
+        }
+    }
+
+  # yandex_compute_instance.node03 will be created
+  + resource "yandex_compute_instance" "node03" {
+      + allow_stopping_for_update = true
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + hostname                  = "db02"
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        }
+      + name                      = "db02-node03"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = "ru-central1-b"
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd8qps171vp141hl7g9l"
+              + name        = "root-node03"
+              + size        = 10
+              + snapshot_id = (known after apply)
+              + type        = "network-ssd"
+            }
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = "192.168.110.13"
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = (known after apply)
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 4
+          + memory        = 4
+        }
+
+      + scheduling_policy {
+          + preemptible = (known after apply)
+        }
+    }
+
+  # yandex_compute_instance.node04 will be created
+  + resource "yandex_compute_instance" "node04" {
+      + allow_stopping_for_update = true
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + hostname                  = "www"
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        }
+      + name                      = "app-node04"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = "ru-central1-b"
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd8qps171vp141hl7g9l"
+              + name        = "root-node04"
+              + size        = 10
+              + snapshot_id = (known after apply)
+              + type        = "network-ssd"
+            }
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = "192.168.110.14"
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = (known after apply)
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 4
+          + memory        = 4
+        }
+
+      + scheduling_policy {
+          + preemptible = (known after apply)
+        }
+    }
+
+  # yandex_compute_instance.node05 will be created
+  + resource "yandex_compute_instance" "node05" {
+      + allow_stopping_for_update = true
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + hostname                  = "gitlab"
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        }
+      + name                      = "gitlab-node05"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = "ru-central1-b"
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd8qps171vp141hl7g9l"
+              + name        = "root-node05"
+              + size        = 15
+              + snapshot_id = (known after apply)
+              + type        = "network-ssd"
+            }
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = "192.168.110.15"
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = (known after apply)
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 4
+          + memory        = 8
+        }
+
+      + scheduling_policy {
+          + preemptible = (known after apply)
+        }
+    }
+
+  # yandex_compute_instance.node06 will be created
+  + resource "yandex_compute_instance" "node06" {
+      + allow_stopping_for_update = true
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + hostname                  = "g-runner"
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        }
+      + name                      = "runner-node06"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = "ru-central1-b"
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd8qps171vp141hl7g9l"
+              + name        = "root-node06"
+              + size        = 10
+              + snapshot_id = (known after apply)
+              + type        = "network-ssd"
+            }
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = "192.168.110.16"
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = (known after apply)
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 4
+          + memory        = 4
+        }
+
+      + scheduling_policy {
+          + preemptible = (known after apply)
+        }
+    }
+
+  # yandex_compute_instance.node07 will be created
+  + resource "yandex_compute_instance" "node07" {
+      + allow_stopping_for_update = true
+      + created_at                = (known after apply)
+      + folder_id                 = (known after apply)
+      + fqdn                      = (known after apply)
+      + hostname                  = "monitoring"
+      + id                        = (known after apply)
+      + metadata                  = {
+          + "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        }
+      + name                      = "monitoring-node07"
+      + network_acceleration_type = "standard"
+      + platform_id               = "standard-v1"
+      + service_account_id        = (known after apply)
+      + status                    = (known after apply)
+      + zone                      = "ru-central1-b"
+
+      + boot_disk {
+          + auto_delete = true
+          + device_name = (known after apply)
+          + disk_id     = (known after apply)
+          + mode        = (known after apply)
+
+          + initialize_params {
+              + block_size  = (known after apply)
+              + description = (known after apply)
+              + image_id    = "fd8qps171vp141hl7g9l"
+              + name        = "root-node07"
+              + size        = 10
+              + snapshot_id = (known after apply)
+              + type        = "network-ssd"
+            }
+        }
+
+      + network_interface {
+          + index              = (known after apply)
+          + ip_address         = "192.168.110.17"
+          + ipv4               = true
+          + ipv6               = (known after apply)
+          + ipv6_address       = (known after apply)
+          + mac_address        = (known after apply)
+          + nat                = (known after apply)
+          + nat_ip_address     = (known after apply)
+          + nat_ip_version     = (known after apply)
+          + security_group_ids = (known after apply)
+          + subnet_id          = (known after apply)
+        }
+
+      + placement_policy {
+          + host_affinity_rules = (known after apply)
+          + placement_group_id  = (known after apply)
+        }
+
+      + resources {
+          + core_fraction = 100
+          + cores         = 4
+          + memory        = 4
+        }
+
+      + scheduling_policy {
+          + preemptible = (known after apply)
+        }
+    }
+
+  # yandex_dns_recordset.rs1 will be created
+  + resource "yandex_dns_recordset" "rs1" {
+      + data    = (known after apply)
+      + id      = (known after apply)
+      + name    = "@"
+      + ttl     = 90
+      + type    = "A"
+      + zone_id = (known after apply)
+    }
+
+  # yandex_dns_recordset.rs2 will be created
+  + resource "yandex_dns_recordset" "rs2" {
+      + data    = (known after apply)
+      + id      = (known after apply)
+      + name    = "www"
+      + ttl     = 90
+      + type    = "A"
+      + zone_id = (known after apply)
+    }
+
+  # yandex_dns_recordset.rs3 will be created
+  + resource "yandex_dns_recordset" "rs3" {
+      + data    = (known after apply)
+      + id      = (known after apply)
+      + name    = "gitlab"
+      + ttl     = 90
+      + type    = "A"
+      + zone_id = (known after apply)
+    }
+
+  # yandex_dns_recordset.rs4 will be created
+  + resource "yandex_dns_recordset" "rs4" {
+      + data    = (known after apply)
+      + id      = (known after apply)
+      + name    = "grafana"
+      + ttl     = 90
+      + type    = "A"
+      + zone_id = (known after apply)
+    }
+
+  # yandex_dns_recordset.rs5 will be created
+  + resource "yandex_dns_recordset" "rs5" {
+      + data    = (known after apply)
+      + id      = (known after apply)
+      + name    = "prometheus"
+      + ttl     = 90
+      + type    = "A"
+      + zone_id = (known after apply)
+    }
+
+  # yandex_dns_recordset.rs6 will be created
+  + resource "yandex_dns_recordset" "rs6" {
+      + data    = (known after apply)
+      + id      = (known after apply)
+      + name    = "alertmanager"
+      + ttl     = 90
+      + type    = "A"
+      + zone_id = (known after apply)
+    }
+
+  # yandex_dns_zone.zone1 will be created
+  + resource "yandex_dns_zone" "zone1" {
+      + created_at       = (known after apply)
+      + description      = "diplomds public zone"
+      + folder_id        = (known after apply)
+      + id               = (known after apply)
+      + labels           = {
+          + "label1" = "diplomdsdns"
+        }
+      + name             = "diplomdspubliczone"
+      + private_networks = (known after apply)
+      + public           = true
+      + zone             = "dsolokhin.ru."
+    }
+
+  # yandex_vpc_network.diploma-vpc-network will be created
+  + resource "yandex_vpc_network" "diploma-vpc-network" {
+      + created_at                = (known after apply)
+      + default_security_group_id = (known after apply)
+      + folder_id                 = (known after apply)
+      + id                        = (known after apply)
+      + labels                    = (known after apply)
+      + name                      = "diplomavpc"
+      + subnet_ids                = (known after apply)
+    }
+
+  # yandex_vpc_route_table.diploma-nat will be created
+  + resource "yandex_vpc_route_table" "diploma-nat" {
+      + created_at = (known after apply)
+      + folder_id  = (known after apply)
+      + id         = (known after apply)
+      + labels     = (known after apply)
+      + network_id = (known after apply)
+
+      + static_route {
+          + destination_prefix = "0.0.0.0/0"
+          + next_hop_address   = "192.168.100.11"
+        }
+    }
+
+  # yandex_vpc_subnet.lan-b will be created
+  + resource "yandex_vpc_subnet" "lan-b" {
+      + created_at     = (known after apply)
+      + folder_id      = (known after apply)
+      + id             = (known after apply)
+      + labels         = (known after apply)
+      + name           = "lansubnetb"
+      + network_id     = (known after apply)
+      + route_table_id = (known after apply)
+      + v4_cidr_blocks = [
+          + "192.168.110.0/24",
+        ]
+      + v6_cidr_blocks = (known after apply)
+      + zone           = "ru-central1-b"
+    }
+
+  # yandex_vpc_subnet.public-a will be created
+  + resource "yandex_vpc_subnet" "public-a" {
+      + created_at     = (known after apply)
+      + folder_id      = (known after apply)
+      + id             = (known after apply)
+      + labels         = (known after apply)
+      + name           = "publicsubneta"
+      + network_id     = (known after apply)
+      + v4_cidr_blocks = [
+          + "192.168.100.0/24",
+        ]
+      + v6_cidr_blocks = (known after apply)
+      + zone           = "ru-central1-a"
+    }
+
+Plan: 21 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + external_ip_address_node01_yandex_cloud = (known after apply)
+  + internal_ip_address_node01_yandex_cloud = "192.168.100.11"
+  + internal_ip_address_node02_yandex_cloud = "192.168.110.12"
+  + internal_ip_address_node03_yandex_cloud = "192.168.110.13"
+  + internal_ip_address_node04_yandex_cloud = "192.168.110.14"
+  + internal_ip_address_node05_yandex_cloud = "192.168.110.15"
+  + internal_ip_address_node06_yandex_cloud = "192.168.110.16"
+  + internal_ip_address_node07_yandex_cloud = "192.168.110.17"
+yandex_dns_zone.zone1: Creating...
+yandex_vpc_network.diploma-vpc-network: Creating...
+yandex_dns_zone.zone1: Creation complete after 1s [id=dnsdnglglkocngcr2fa8]
+yandex_vpc_network.diploma-vpc-network: Creation complete after 2s [id=enpc8v6r2dqntbv6i254]
+yandex_vpc_subnet.public-a: Creating...
+yandex_vpc_route_table.diploma-nat: Creating...
+yandex_vpc_subnet.public-a: Creation complete after 0s [id=e9b7a43srvpqv04o0jmj]
+yandex_compute_instance.node01: Creating...
+yandex_vpc_route_table.diploma-nat: Creation complete after 1s [id=enp8jihbrggpar52a2e2]
+yandex_vpc_subnet.lan-b: Creating...
+yandex_vpc_subnet.lan-b: Creation complete after 1s [id=e2lq16ihrvssp5e7qkn2]
+yandex_compute_instance.node03: Creating...
+yandex_compute_instance.node07: Creating...
+yandex_compute_instance.node05: Creating...
+yandex_compute_instance.node04: Creating...
+yandex_compute_instance.node06: Creating...
+yandex_compute_instance.node02: Creating...
+yandex_compute_instance.node01: Still creating... [10s elapsed]
+yandex_compute_instance.node03: Still creating... [10s elapsed]
+yandex_compute_instance.node07: Still creating... [10s elapsed]
+yandex_compute_instance.node04: Still creating... [10s elapsed]
+yandex_compute_instance.node05: Still creating... [10s elapsed]
+yandex_compute_instance.node06: Still creating... [10s elapsed]
+yandex_compute_instance.node02: Still creating... [10s elapsed]
+yandex_compute_instance.node01: Still creating... [20s elapsed]
+yandex_compute_instance.node03: Still creating... [20s elapsed]
+yandex_compute_instance.node07: Still creating... [20s elapsed]
+yandex_compute_instance.node06: Still creating... [20s elapsed]
+yandex_compute_instance.node04: Still creating... [20s elapsed]
+yandex_compute_instance.node05: Still creating... [20s elapsed]
+yandex_compute_instance.node02: Still creating... [20s elapsed]
+yandex_compute_instance.node02: Creation complete after 23s [id=epdtihhg12q1ojsam88a]
+yandex_compute_instance.node01: Creation complete after 29s [id=fhmdu02cveb8jhbmfjif]
+yandex_dns_recordset.rs1: Creating...
+yandex_dns_recordset.rs5: Creating...
+yandex_dns_recordset.rs2: Creating...
+yandex_dns_recordset.rs6: Creating...
+yandex_dns_recordset.rs4: Creating...
+yandex_dns_recordset.rs2: Creation complete after 0s [id=dnsdnglglkocngcr2fa8/www/A]
+yandex_dns_recordset.rs3: Creating...
+yandex_dns_recordset.rs4: Creation complete after 0s [id=dnsdnglglkocngcr2fa8/grafana/A]
+yandex_compute_instance.node03: Creation complete after 27s [id=epd2u0aunfvs5k0sak8c]
+yandex_compute_instance.node04: Creation complete after 27s [id=epdji21cdiu1gi8ch705]
+yandex_dns_recordset.rs3: Creation complete after 1s [id=dnsdnglglkocngcr2fa8/gitlab/A]
+yandex_dns_recordset.rs1: Creation complete after 1s [id=dnsdnglglkocngcr2fa8/@/A]
+yandex_dns_recordset.rs6: Creation complete after 1s [id=dnsdnglglkocngcr2fa8/alertmanager/A]
+yandex_dns_recordset.rs5: Creation complete after 1s [id=dnsdnglglkocngcr2fa8/prometheus/A]
+yandex_compute_instance.node07: Still creating... [30s elapsed]
+yandex_compute_instance.node05: Still creating... [30s elapsed]
+yandex_compute_instance.node06: Still creating... [30s elapsed]
+yandex_compute_instance.node07: Creation complete after 33s [id=epdbfqe1ofcodnv17vur]
+yandex_compute_instance.node06: Creation complete after 34s [id=epdii0lh06t3236148nl]
+yandex_compute_instance.node05: Creation complete after 35s [id=epd375uj76ksku3csmrp]
+local_file.inventory: Creating...
+local_file.inventory: Creation complete after 0s [id=d2290386bf7df63705b7b6607fe5a9c91ebb2936]
+null_resource.wait: Creating...
+null_resource.wait: Provisioning with 'local-exec'...
+null_resource.wait (local-exec): Executing: ["/bin/sh" "-c" "sleep 60"]
+null_resource.wait: Still creating... [10s elapsed]
+null_resource.wait: Still creating... [20s elapsed]
+null_resource.wait: Still creating... [30s elapsed]
+null_resource.wait: Still creating... [40s elapsed]
+null_resource.wait: Still creating... [50s elapsed]
+null_resource.wait: Still creating... [1m0s elapsed]
+null_resource.wait: Creation complete after 1m0s [id=424972553]
+null_resource.playbook: Creating...
+null_resource.playbook: Provisioning with 'local-exec'...
+null_resource.playbook (local-exec): Executing: ["/bin/sh" "-c" "ANSIBLE_FORCE_COLOR=1 ansible-playbook -i ../../ansible/inventory ../../ansible/playbook.yml"]
+null_resource.playbook (local-exec): [DEPRECATION WARNING]: "include" is deprecated, use include_tasks/import_tasks 
+null_resource.playbook (local-exec): instead. This feature will be removed in version 2.16. Deprecation warnings can
+null_resource.playbook (local-exec):  be disabled by setting deprecation_warnings=False in ansible.cfg.
+
+null_resource.playbook (local-exec): PLAY [all] *********************************************************************
+
+null_resource.playbook (local-exec): TASK [Gathering Facts] *********************************************************
+null_resource.playbook (local-exec): ok: [nginx.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db01.dsolokhin.ru]
+null_resource.playbook: Still creating... [10s elapsed]
+null_resource.playbook (local-exec): ok: [runner.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [Update Package Cache (apt/Ubuntu)] ***************************************
+null_resource.playbook: Still creating... [20s elapsed]
+null_resource.playbook: Still creating... [30s elapsed]
+null_resource.playbook (local-exec): ok: [nginx.dsolokhin.ru]
+null_resource.playbook: Still creating... [40s elapsed]
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db01.dsolokhin.ru]
+null_resource.playbook: Still creating... [50s elapsed]
+null_resource.playbook (local-exec): ok: [runner.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): PLAY [all] *********************************************************************
+
+null_resource.playbook (local-exec): TASK [Gathering Facts] *********************************************************
+null_resource.playbook: Still creating... [1m0s elapsed]
+null_resource.playbook (local-exec): ok: [nginx.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [runner.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [pre_tasks : Add hosts for node 01] ***************************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [runner.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [pre_tasks : Add hosts for node 02] ***************************************
+null_resource.playbook: Still creating... [1m10s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [runner.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [pre_tasks : Add hosts for node 03] ***************************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [runner.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [pre_tasks : Add hosts for node 04] ***************************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+null_resource.playbook: Still creating... [1m20s elapsed]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [runner.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [pre_tasks : Add hosts for node 05] ***************************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [runner.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [pre_tasks : Add hosts for node 06] ***************************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [runner.dsolokhin.ru]
+null_resource.playbook: Still creating... [1m30s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [pre_tasks : Add hosts for node 07] ***************************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [runner.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): PLAY [nginx.dsolokhin.ru] ******************************************************
+
+null_resource.playbook (local-exec): TASK [Gathering Facts] *********************************************************
+null_resource.playbook (local-exec): ok: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_base : Ensure download folder exists] ******************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx : Ensure Nginx is installed] ***************************************
+null_resource.playbook: Still creating... [1m40s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx : Ensure www home exists] ******************************************
+null_resource.playbook: Still creating... [1m50s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx : Ensure default webroot is disabled] ******************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Ensure letsencrypt challenge root exists] ********************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Ensure letsencrypt challenge endpoint is configured] *********
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Ensure letsencrypt challenge endpoint is enabled] ************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Ensure Nginx is restarted immediately when necessary] ********
+null_resource.playbook: Still creating... [2m0s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Ensure letsencrypt certbot is installed] *********************
+null_resource.playbook: Still creating... [2m10s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Check that no previous letsencrypt certificates exist] *******
+null_resource.playbook (local-exec): ok: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : CREATING certificates are PRODUCTIVE] ************************
+null_resource.playbook: Still creating... [2m20s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru] => (item=dsolokhin.ru)
+null_resource.playbook: Still creating... [2m30s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru] => (item=www.dsolokhin.ru)
+null_resource.playbook: Still creating... [2m40s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru] => (item=gitlab.dsolokhin.ru)
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru] => (item=grafana.dsolokhin.ru)
+null_resource.playbook: Still creating... [2m50s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru] => (item=prometheus.dsolokhin.ru)
+null_resource.playbook: Still creating... [3m0s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru] => (item=alertmanager.dsolokhin.ru)
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Ensure default certbot cron is disabled] *********************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Ensure script for certificate renewal is present] ************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Ensure cron job for certificate renewal is present] **********
+null_resource.playbook: Still creating... [3m10s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_tls : Ensure default webroot is disabled] **************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_proxy : Ensure proxy endpoint is configured] ***********************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_proxy : Ensure proxy is enabled] ***********************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nginx_proxy : Ensure Nginx is restarted immediately when necessary] ******
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter group] *******************************
+null_resource.playbook: Still creating... [3m20s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter user] ********************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create directory for config node exporter] ****************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Download and unzip node exporter] *************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Move src to final destination] ****************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Delete tmp files] *****************************************
+null_resource.playbook: Still creating... [3m30s elapsed]
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Install node exporter as service] *************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : meta] *****************************************************
+
+null_resource.playbook (local-exec): RUNNING HANDLER [nodeexporter : Restart node exporter] *************************
+null_resource.playbook (local-exec): changed: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Service always startup - systemd] *************************
+null_resource.playbook (local-exec): ok: [nginx.dsolokhin.ru]
+
+null_resource.playbook (local-exec): PLAY [db] **********************************************************************
+
+null_resource.playbook (local-exec): TASK [Gathering Facts] *********************************************************
+null_resource.playbook: Still creating... [3m40s elapsed]
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Installing Mysql and dependencies] *******************************
+null_resource.playbook: Still creating... [3m50s elapsed]
+null_resource.playbook: Still creating... [4m0s elapsed]
+null_resource.playbook: Still creating... [4m10s elapsed]
+null_resource.playbook: Still creating... [4m20s elapsed]
+null_resource.playbook: Still creating... [4m30s elapsed]
+null_resource.playbook: Still creating... [4m40s elapsed]
+null_resource.playbook: Still creating... [4m50s elapsed]
+null_resource.playbook: Still creating... [5m0s elapsed]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru] => (item=mysql-server)
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru] => (item=mysql-server)
+null_resource.playbook: Still creating... [5m10s elapsed]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru] => (item=mysql-client)
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru] => (item=mysql-client)
+null_resource.playbook: Still creating... [5m20s elapsed]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru] => (item=python3-mysqldb)
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru] => (item=python3-mysqldb)
+null_resource.playbook: Still creating... [5m30s elapsed]
+null_resource.playbook: Still creating... [5m40s elapsed]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru] => (item=libmysqlclient-dev)
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru] => (item=libmysqlclient-dev)
+
+null_resource.playbook (local-exec): TASK [mysql : UP mysql service] ************************************************
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru]
+null_resource.playbook: Still creating... [5m50s elapsed]
+null_resource.playbook (local-exec): ok: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Remove all anonim accounts] **************************************
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Remove default database] *****************************************
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Creating data base] **********************************************
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Creating mysql user] *********************************************
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Enable remote access] ********************************************
+null_resource.playbook: Still creating... [6m0s elapsed]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Add config file primary] *****************************************
+null_resource.playbook (local-exec): skipping: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Add config file replica] *****************************************
+null_resource.playbook (local-exec): skipping: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Ensure replication user exists on primary] ***********************
+null_resource.playbook (local-exec): skipping: [db02.dsolokhin.ru]
+null_resource.playbook: Still creating... [6m10s elapsed]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Checking status of replica replication] **************************
+null_resource.playbook (local-exec): skipping: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): [DEPRECATION WARNING]: "Is_Master" and "Is_Slave" return values are deprecated 
+null_resource.playbook (local-exec): and will be replaced with "Is_Primary" and "Is_Replica" in the next major 
+null_resource.playbook (local-exec): release. Use "Is_Primary" and "Is_Replica" instead. This feature will be 
+null_resource.playbook (local-exec): removed from community.mysql in version 3.0.0. Deprecation warnings can be 
+null_resource.playbook (local-exec): disabled by setting deprecation_warnings=False in ansible.cfg.
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Checking status of primary replication] **************************
+null_resource.playbook (local-exec): skipping: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru -> db01.dsolokhin.ru(192.168.110.12)]
+
+null_resource.playbook (local-exec): TASK [mysql : Config replication on the replica] *******************************
+null_resource.playbook (local-exec): skipping: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [mysql : Start mysql replication] *****************************************
+null_resource.playbook (local-exec): skipping: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter group] *******************************
+null_resource.playbook: Still creating... [6m20s elapsed]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter user] ********************************
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create directory for config node exporter] ****************
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Download and unzip node exporter] *************************
+null_resource.playbook: Still creating... [6m30s elapsed]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Move src to final destination] ****************************
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Delete tmp files] *****************************************
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Install node exporter as service] *************************
+null_resource.playbook: Still creating... [6m40s elapsed]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : meta] *****************************************************
+
+null_resource.playbook (local-exec): RUNNING HANDLER [mysql : Restart mysql] ****************************************
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [nodeexporter : Restart node exporter] *************************
+null_resource.playbook (local-exec): changed: [db02.dsolokhin.ru]
+null_resource.playbook (local-exec): changed: [db01.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Service always startup - systemd] *************************
+null_resource.playbook: Still creating... [6m50s elapsed]
+null_resource.playbook (local-exec): ok: [db01.dsolokhin.ru]
+null_resource.playbook (local-exec): ok: [db02.dsolokhin.ru]
+
+null_resource.playbook (local-exec): PLAY [www.dsolokhin.ru] ********************************************************
+
+null_resource.playbook (local-exec): TASK [Gathering Facts] *********************************************************
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Install Nginx] ***********************************************
+null_resource.playbook: Still creating... [7m0s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Enable default site] *****************************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Install PHP Extensions] **************************************
+null_resource.playbook: Still creating... [7m10s elapsed]
+null_resource.playbook: Still creating... [7m20s elapsed]
+null_resource.playbook: Still creating... [7m30s elapsed]
+null_resource.playbook: Still creating... [7m40s elapsed]
+null_resource.playbook: Still creating... [7m50s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru] => (item=php7.4)
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru] => (item=php7.4-fpm)
+null_resource.playbook: Still creating... [8m0s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru] => (item=php7.4-mysql)
+null_resource.playbook: Still creating... [8m10s elapsed]
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru] => (item=php-common)
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru] => (item=php7.4-cli)
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru] => (item=php7.4-common)
+null_resource.playbook: Still creating... [8m20s elapsed]
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru] => (item=php7.4-json)
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru] => (item=php7.4-opcache)
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru] => (item=php7.4-readline)
+null_resource.playbook: Still creating... [8m30s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru] => (item=php7.4-mbstring)
+null_resource.playbook: Still creating... [8m40s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru] => (item=php7.4-xml)
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru] => (item=php7.4-gd)
+null_resource.playbook: Still creating... [8m50s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru] => (item=php7.4-curl)
+null_resource.playbook: Still creating... [9m0s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru] => (item=php7.4-zip)
+
+null_resource.playbook (local-exec): TASK [wordpress : Purge Apache2] ***********************************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Create site root folder] *************************************
+null_resource.playbook: Still creating... [9m10s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Download and unpack latest WordPress] ************************
+null_resource.playbook: Still creating... [9m20s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Set ownership] ***********************************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Set permissions for directories] *****************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Set permissions for files] ***********************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Update WordPress config file] ********************************
+null_resource.playbook: Still creating... [9m30s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Restart nginx, in all cases] *********************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Download Wordpress CLI] **************************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Move the binary to the final destination] ********************
+null_resource.playbook: Still creating... [9m40s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [wordpress : Create_site] *************************************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter group] *******************************
+null_resource.playbook: Still creating... [9m50s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter user] ********************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create directory for config node exporter] ****************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Download and unzip node exporter] *************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Move src to final destination] ****************************
+null_resource.playbook: Still creating... [10m0s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Delete tmp files] *****************************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Install node exporter as service] *************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : meta] *****************************************************
+
+null_resource.playbook (local-exec): RUNNING HANDLER [wordpress : nginx systemd] ************************************
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [wordpress : nginx restart] ************************************
+null_resource.playbook: Still creating... [10m10s elapsed]
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [nodeexporter : Restart node exporter] *************************
+null_resource.playbook (local-exec): changed: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Service always startup - systemd] *************************
+null_resource.playbook (local-exec): ok: [www.dsolokhin.ru]
+
+null_resource.playbook (local-exec): PLAY [gitlab.dsolokhin.ru] *****************************************************
+
+null_resource.playbook (local-exec): TASK [Gathering Facts] *********************************************************
+null_resource.playbook: Still creating... [10m20s elapsed]
+null_resource.playbook (local-exec): ok: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [gitlab : Install GitLab dependencies] ************************************
+null_resource.playbook: Still creating... [10m30s elapsed]
+null_resource.playbook: Still creating... [10m40s elapsed]
+null_resource.playbook: Still creating... [10m50s elapsed]
+null_resource.playbook (local-exec): ok: [gitlab.dsolokhin.ru] => (item=curl)
+null_resource.playbook (local-exec): ok: [gitlab.dsolokhin.ru] => (item=tzdata)
+null_resource.playbook: Still creating... [11m0s elapsed]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru] => (item=perl)
+null_resource.playbook: Still creating... [11m10s elapsed]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru] => (item=gnupg2)
+
+null_resource.playbook (local-exec): TASK [gitlab : Download GitLab repository installation script.] ****************
+null_resource.playbook: Still creating... [11m20s elapsed]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [gitlab : Install GitLab repository.] *************************************
+null_resource.playbook: Still creating... [11m30s elapsed]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [gitlab : Install GitLab.] ************************************************
+null_resource.playbook: Still creating... [11m40s elapsed]
+null_resource.playbook: Still creating... [11m50s elapsed]
+null_resource.playbook: Still creating... [12m0s elapsed]
+null_resource.playbook: Still creating... [12m10s elapsed]
+null_resource.playbook: Still creating... [12m20s elapsed]
+null_resource.playbook: Still creating... [12m30s elapsed]
+null_resource.playbook: Still creating... [12m40s elapsed]
+null_resource.playbook: Still creating... [12m50s elapsed]
+null_resource.playbook: Still creating... [13m0s elapsed]
+null_resource.playbook: Still creating... [13m10s elapsed]
+null_resource.playbook: Still creating... [13m20s elapsed]
+null_resource.playbook: Still creating... [13m30s elapsed]
+null_resource.playbook: Still creating... [13m40s elapsed]
+null_resource.playbook: Still creating... [13m50s elapsed]
+null_resource.playbook: Still creating... [14m0s elapsed]
+null_resource.playbook: Still creating... [14m10s elapsed]
+null_resource.playbook: Still creating... [14m20s elapsed]
+null_resource.playbook: Still creating... [14m30s elapsed]
+null_resource.playbook: Still creating... [14m40s elapsed]
+null_resource.playbook: Still creating... [14m50s elapsed]
+null_resource.playbook: Still creating... [15m0s elapsed]
+null_resource.playbook: Still creating... [15m10s elapsed]
+null_resource.playbook: Still creating... [15m20s elapsed]
+null_resource.playbook: Still creating... [15m30s elapsed]
+null_resource.playbook: Still creating... [15m40s elapsed]
+null_resource.playbook: Still creating... [15m50s elapsed]
+null_resource.playbook: Still creating... [16m0s elapsed]
+null_resource.playbook: Still creating... [16m10s elapsed]
+null_resource.playbook: Still creating... [16m20s elapsed]
+null_resource.playbook: Still creating... [16m30s elapsed]
+null_resource.playbook: Still creating... [16m40s elapsed]
+null_resource.playbook: Still creating... [16m50s elapsed]
+null_resource.playbook: Still creating... [17m0s elapsed]
+null_resource.playbook: Still creating... [17m10s elapsed]
+null_resource.playbook: Still creating... [17m20s elapsed]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [gitlab : Configure external URL (workhouse)] *****************************
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [gitlab : Configure Gitlab prometheus] ************************************
+null_resource.playbook: Still creating... [17m30s elapsed]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [gitlab : Configure Gitlab node_exporter] *********************************
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [gitlab : Configure token for Gitlab rails initial_shared_runners] ********
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [gitlab : Configure Gitlab root password] *********************************
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [gitlab : Reconfigure GitLab (first run).] ********************************
+null_resource.playbook: Still creating... [17m40s elapsed]
+null_resource.playbook: Still creating... [17m50s elapsed]
+null_resource.playbook: Still creating... [18m0s elapsed]
+null_resource.playbook: Still creating... [18m10s elapsed]
+null_resource.playbook: Still creating... [18m20s elapsed]
+null_resource.playbook: Still creating... [18m30s elapsed]
+null_resource.playbook: Still creating... [18m40s elapsed]
+null_resource.playbook: Still creating... [18m50s elapsed]
+null_resource.playbook: Still creating... [19m0s elapsed]
+null_resource.playbook: Still creating... [19m10s elapsed]
+null_resource.playbook: Still creating... [19m20s elapsed]
+null_resource.playbook: Still creating... [19m30s elapsed]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter group] *******************************
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter user] ********************************
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create directory for config node exporter] ****************
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Download and unzip node exporter] *************************
+null_resource.playbook: Still creating... [19m40s elapsed]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Move src to final destination] ****************************
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Delete tmp files] *****************************************
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Install node exporter as service] *************************
+null_resource.playbook: Still creating... [19m50s elapsed]
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : meta] *****************************************************
+
+null_resource.playbook (local-exec): RUNNING HANDLER [nodeexporter : Restart node exporter] *************************
+null_resource.playbook (local-exec): changed: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Service always startup - systemd] *************************
+null_resource.playbook (local-exec): ok: [gitlab.dsolokhin.ru]
+
+null_resource.playbook (local-exec): PLAY [monitoring.dsolokhin.ru] *************************************************
+
+null_resource.playbook (local-exec): TASK [Gathering Facts] *********************************************************
+null_resource.playbook: Still creating... [20m0s elapsed]
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create prometheus group] ************************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create prometheus user] *************************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create prometheus directory] ********************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create prometheus configuration directory] ******
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item=/etc/prometheus)
+null_resource.playbook: Still creating... [20m10s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item=/etc/prometheus/rules)
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item=/etc/prometheus/file_sd)
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Set prometheus_metrics_path] ********************
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Download prometheus binary] *********************
+null_resource.playbook: Still creating... [20m20s elapsed]
+null_resource.playbook: Still creating... [20m30s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru -> localhost]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Unpack prometheus binaries] *********************
+null_resource.playbook: Still creating... [20m40s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru -> localhost]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Copy binaries (official prometheus & promtool) to desination folder] ***
+null_resource.playbook: Still creating... [20m50s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item=prometheus)
+null_resource.playbook: Still creating... [21m0s elapsed]
+null_resource.playbook: Still creating... [21m10s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item=promtool)
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Copy templates] *********************************
+null_resource.playbook: Still creating... [21m20s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item=console_libraries)
+null_resource.playbook: Still creating... [21m30s elapsed]
+null_resource.playbook: Still creating... [21m40s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item=consoles)
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Copy prometheus_binary_local_dir] ***************
+null_resource.playbook (local-exec): skipping: [monitoring.dsolokhin.ru] => (item=prometheus) 
+null_resource.playbook (local-exec): skipping: [monitoring.dsolokhin.ru] => (item=promtool) 
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create service at systemd] **********************
+null_resource.playbook: Still creating... [21m50s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Copy alerting rules as template file] ***********
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Configure prometheus] ***************************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Service always startup - systemd] ***************
+null_resource.playbook: Still creating... [22m0s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Install gpg] ************************************
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Add Grafana gpg-key] ****************************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Install Grafana repo] ***************************
+null_resource.playbook: Still creating... [22m10s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Install Grafana] ********************************
+null_resource.playbook: Still creating... [22m20s elapsed]
+null_resource.playbook: Still creating... [22m30s elapsed]
+null_resource.playbook: Still creating... [22m40s elapsed]
+null_resource.playbook: Still creating... [22m50s elapsed]
+null_resource.playbook: Still creating... [23m0s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Install grafana-server as service] **************
+null_resource.playbook: Still creating... [23m10s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Looking for service startup] ********************
+null_resource.playbook (local-exec): FAILED - RETRYING: [monitoring.dsolokhin.ru]: Looking for service startup (120 retries left).
+null_resource.playbook (local-exec): FAILED - RETRYING: [monitoring.dsolokhin.ru]: Looking for service startup (119 retries left).
+null_resource.playbook: Still creating... [23m20s elapsed]
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Change Grafana admin password] ******************
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create/Update datasources file (provisioning)] ***
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create dashboard directory for grafana] *********
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create dashboards data directory for grafana] ***
+null_resource.playbook: Still creating... [23m30s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Download dashboard from grafana.net to node tempdir] ***
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru] => (item={'dashboard_id': '3662', 'revision_id': '2', 'datasource': 'Prometheus'})
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru] => (item={'dashboard_id': '1860', 'revision_id': '27', 'datasource': 'Prometheus'})
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru] => (item={'dashboard_id': '9578', 'revision_id': '4', 'datasource': 'Prometheus'})
+null_resource.playbook: Still creating... [23m40s elapsed]
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru] => (item={'dashboard_id': '9628', 'revision_id': '7', 'datasource': 'Prometheus'})
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Set the correct data source name in the dashboard] ***
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru] => (item={'dashboard_id': '3662', 'revision_id': '2', 'datasource': 'Prometheus'})
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru] => (item={'dashboard_id': '1860', 'revision_id': '27', 'datasource': 'Prometheus'})
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru] => (item={'dashboard_id': '9578', 'revision_id': '4', 'datasource': 'Prometheus'})
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru] => (item={'dashboard_id': '9628', 'revision_id': '7', 'datasource': 'Prometheus'})
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create/Update dashboards file (provisioning)] ***
+null_resource.playbook: Still creating... [23m50s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Register previously copied dashboards] **********
+null_resource.playbook (local-exec): skipping: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Register dashboards to copy] ********************
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Import grafana dashboards] **********************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item={'path': '/tmp/ansible.aa4crfx3/9628.json', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 71832, 'inode': 272882, 'dev': 64514, 'nlink': 1, 'atime': 1664996908.8456836, 'mtime': 1664996908.8456836, 'ctime': 1664996908.8456836, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item={'path': '/tmp/ansible.aa4crfx3/9578.json', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 307942, 'inode': 272883, 'dev': 64514, 'nlink': 1, 'atime': 1664996906.929677, 'mtime': 1664996897.817646, 'ctime': 1664996897.817646, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+null_resource.playbook: Still creating... [24m0s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item={'path': '/tmp/ansible.aa4crfx3/1860.json', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 387756, 'inode': 272881, 'dev': 64514, 'nlink': 1, 'atime': 1664996904.2136679, 'mtime': 1664996904.2136679, 'ctime': 1664996904.6776695, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item={'path': '/tmp/ansible.aa4crfx3/3662.json', 'mode': '0644', 'isdir': False, 'ischr': False, 'isblk': False, 'isreg': True, 'isfifo': False, 'islnk': False, 'issock': False, 'uid': 0, 'gid': 0, 'size': 85558, 'inode': 272885, 'dev': 64514, 'nlink': 1, 'atime': 1664996902.3456614, 'mtime': 1664996902.3456614, 'ctime': 1664996902.3456614, 'gr_name': 'root', 'pw_name': 'root', 'wusr': True, 'rusr': True, 'xusr': False, 'wgrp': False, 'rgrp': True, 'xgrp': False, 'woth': False, 'roth': True, 'xoth': False, 'isuid': False, 'isgid': False})
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Get dashboard lists] ****************************
+null_resource.playbook (local-exec): skipping: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Remove dashboards not present on deployer machine (synchronize)] ***
+null_resource.playbook (local-exec): skipping: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create alertmanager system group] ***************
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create alertmanager system user] ****************
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create alertmanager directories] ****************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Download Alertmanager] **************************
+null_resource.playbook: Still creating... [24m10s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Symlink Alertmanager bin] ***********************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item=alertmanager)
+null_resource.playbook: Still creating... [24m20s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru] => (item=amtool)
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create the Alertmanager Storage directory] ******
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create the Alertmanager configuration directory] ***
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create the Alertmanager templates directory] ****
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create the Alertmanager configuration file] *****
+null_resource.playbook: Still creating... [24m30s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : Create the Systemd Unit file for the Alertmanager service] ***
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [all_modules_monitoring : service always started] *************************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter group] *******************************
+null_resource.playbook: Still creating... [24m40s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create node exporter user] ********************************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Create directory for config node exporter] ****************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Download and unzip node exporter] *************************
+null_resource.playbook: Still creating... [24m50s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Move src to final destination] ****************************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Delete tmp files] *****************************************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Install node exporter as service] *************************
+null_resource.playbook: Still creating... [25m0s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : meta] *****************************************************
+
+null_resource.playbook (local-exec): RUNNING HANDLER [all_modules_monitoring : reload alertmanager] *****************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [all_modules_monitoring : restart alertmanager] ****************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [all_modules_monitoring : restart prometheus] ******************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [all_modules_monitoring : reload prometheus] *******************
+null_resource.playbook: Still creating... [25m10s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [all_modules_monitoring : restart grafana] *********************
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [all_modules_monitoring : Set privileges on provisioned dashboards] ***
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [all_modules_monitoring : Set privileges on provisioned dashboards directory] ***
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): RUNNING HANDLER [nodeexporter : Restart node exporter] *************************
+null_resource.playbook: Still creating... [25m20s elapsed]
+null_resource.playbook (local-exec): changed: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): TASK [nodeexporter : Service always startup - systemd] *************************
+null_resource.playbook (local-exec): ok: [monitoring.dsolokhin.ru]
+
+null_resource.playbook (local-exec): PLAY RECAP *********************************************************************
+null_resource.playbook (local-exec): db01.dsolokhin.ru          : ok=30   changed=22   unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+null_resource.playbook (local-exec): db02.dsolokhin.ru          : ok=33   changed=23   unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+null_resource.playbook (local-exec): gitlab.dsolokhin.ru        : ok=30   changed=25   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+null_resource.playbook (local-exec): monitoring.dsolokhin.ru    : ok=66   changed=51   unreachable=0    failed=0    skipped=4    rescued=0    ignored=0
+null_resource.playbook (local-exec): nginx.dsolokhin.ru         : ok=38   changed=32   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+null_resource.playbook (local-exec): runner.dsolokhin.ru        : ok=10   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+null_resource.playbook (local-exec): www.dsolokhin.ru           : ok=36   changed=30   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+null_resource.playbook: Creation complete after 1h 25m23s [id=205142415]
+
+Apply complete! Resources: 21 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+external_ip_address_node01_yandex_cloud = "51.250.3.225"
+internal_ip_address_node01_yandex_cloud = "192.168.100.11"
+internal_ip_address_node02_yandex_cloud = "192.168.110.12"
+internal_ip_address_node03_yandex_cloud = "192.168.110.13"
+internal_ip_address_node04_yandex_cloud = "192.168.110.14"
+internal_ip_address_node05_yandex_cloud = "192.168.110.15"
+internal_ip_address_node06_yandex_cloud = "192.168.110.16"
+internal_ip_address_node07_yandex_cloud = "192.168.110.17"
+
+--------------------------
+-----------------------
+--------------------------
+terraform destroy -auto-approve
+yandex_dns_zone.zone1: Refreshing state... [id=dnsdnglglkocngcr2fa8]
+yandex_vpc_network.diploma-vpc-network: Refreshing state... [id=enpc8v6r2dqntbv6i254]
+yandex_vpc_subnet.public-a: Refreshing state... [id=e9b7a43srvpqv04o0jmj]
+yandex_vpc_route_table.diploma-nat: Refreshing state... [id=enp8jihbrggpar52a2e2]
+yandex_vpc_subnet.lan-b: Refreshing state... [id=e2lq16ihrvssp5e7qkn2]
+yandex_compute_instance.node01: Refreshing state... [id=fhmdu02cveb8jhbmfjif]
+yandex_compute_instance.node04: Refreshing state... [id=epdji21cdiu1gi8ch705]
+yandex_compute_instance.node06: Refreshing state... [id=epdii0lh06t3236148nl]
+yandex_compute_instance.node07: Refreshing state... [id=epdbfqe1ofcodnv17vur]
+yandex_compute_instance.node05: Refreshing state... [id=epdg5q8rhf0guj8cq00e]
+yandex_compute_instance.node03: Refreshing state... [id=epd2u0aunfvs5k0sak8c]
+yandex_compute_instance.node02: Refreshing state... [id=epdtihhg12q1ojsam88a]
+yandex_dns_recordset.rs1: Refreshing state... [id=dnsdnglglkocngcr2fa8/@/A]
+yandex_dns_recordset.rs2: Refreshing state... [id=dnsdnglglkocngcr2fa8/www/A]
+yandex_dns_recordset.rs6: Refreshing state... [id=dnsdnglglkocngcr2fa8/alertmanager/A]
+yandex_dns_recordset.rs3: Refreshing state... [id=dnsdnglglkocngcr2fa8/gitlab/A]
+yandex_dns_recordset.rs4: Refreshing state... [id=dnsdnglglkocngcr2fa8/grafana/A]
+yandex_dns_recordset.rs5: Refreshing state... [id=dnsdnglglkocngcr2fa8/prometheus/A]
+local_file.inventory: Refreshing state... [id=7a7f6ed28d586e73ff26a71f879b4868e8d877cc]
+null_resource.wait: Refreshing state... [id=424972553]
+null_resource.playbook: Refreshing state... [id=205142415]
+
+Terraform used the selected providers to generate the following execution plan.
+Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # local_file.inventory will be destroyed
+  - resource "local_file" "inventory" {
+      - content              = <<-EOT
+            # Ansible inventory containing variable values from Terraform.
+            # Generated by Terraform.
+            
+            # Список нод:ip
+            [node01]
+            nginx.dsolokhin.ru ansible_host=51.250.3.225
+            
+            [node02]
+            db01.dsolokhin.ru ansible_host=192.168.110.12
+            
+            [node03]
+            db02.dsolokhin.ru ansible_host=192.168.110.13
+            
+            [node04]
+            www.dsolokhin.ru ansible_host=192.168.110.14
+            
+            [node05]
+            gitlab.dsolokhin.ru ansible_host=192.168.110.15
+            
+            [node06]
+            runner.dsolokhin.ru ansible_host=192.168.110.16
+            
+            [node07]
+            monitoring.dsolokhin.ru ansible_host=192.168.110.17
+            
+            
+            [allhosts:children]
+            node01
+            node02
+            node03
+            node04
+            node05
+            node06
+            node07
+            
+            [allhosts:vars]
+            domain_name = "dsolokhin.ru"
+            ip_node01 = 192.168.100.11
+            ip_node02 = 192.168.110.12
+            ip_node03 = 192.168.110.13
+            ip_node04 = 192.168.110.14
+            ip_node05 = 192.168.110.15
+            ip_node06 = 192.168.110.16
+            ip_node07 = 192.168.110.17
+            
+            [db:children]
+            node02
+            node03
+            
+            [db:vars]
+            replication_passwd = "replication"
+            
+            #Памятка по настройке https://docs.ansible.com/ansible/latest/collections/ansible/builtin/ssh_connection.html
+            
+            [node01:vars]
+            domain_name = "dsolokhin.ru"
+            
+            [node02:vars]
+            ansible_ssh_common_args='-o ControlMaster=auto -o ControlPersist=10m -o ProxyCommand="ssh -W %h:%p -q ubuntu@51.250.3.225"'
+            mysql_replication_role = "primary"
+            
+            [node03:vars]
+            ansible_ssh_common_args='-o ControlMaster=auto -o ControlPersist=10m -o ProxyCommand="ssh -W %h:%p -q ubuntu@51.250.3.225"'
+            mysql_replication_role = "replica"
+            
+            [node04:vars]
+            ansible_ssh_common_args='-o ControlMaster=auto -o ControlPersist=10m -o ProxyCommand="ssh -W %h:%p -q ubuntu@51.250.3.225"'
+            domain_name = "dsolokhin.ru"
+            
+            [node05:vars]
+            ansible_ssh_common_args='-o ControlMaster=auto -o ControlPersist=10m -o ProxyCommand="ssh -W %h:%p -q ubuntu@51.250.3.225"'
+            gitlab_passwd = "gitlab!!!"
+            gitlab_runner = "gitlabtoken"
+            domain_name = "dsolokhin.ru"
+            
+            [node06:vars]
+            ansible_ssh_common_args='-o ControlMaster=auto -o ControlPersist=10m -o ProxyCommand="ssh -W %h:%p -q ubuntu@51.250.3.225"'
+            gitlab_runner = "gitlabtoken"
+            domain_name = "dsolokhin.ru"
+            
+            [node07:vars]
+            ansible_ssh_common_args='-o ControlMaster=auto -o ControlPersist=10m -o ProxyCommand="ssh -W %h:%p -q ubuntu@51.250.3.225"'
+            grafana_passwd = "grafana"
+            
+        EOT -> null
+      - directory_permission = "0777" -> null
+      - file_permission      = "0777" -> null
+      - filename             = "../../ansible/inventory" -> null
+      - id                   = "7a7f6ed28d586e73ff26a71f879b4868e8d877cc" -> null
+    }
+
+  # null_resource.playbook will be destroyed
+  - resource "null_resource" "playbook" {
+      - id = "205142415" -> null
+    }
+
+  # null_resource.wait will be destroyed
+  - resource "null_resource" "wait" {
+      - id = "424972553" -> null
+    }
+
+  # yandex_compute_instance.node01 will be destroyed
+  - resource "yandex_compute_instance" "node01" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2022-10-05T18:43:04Z" -> null
+      - folder_id                 = "b1gem3u5mv0e4k9vjcif" -> null
+      - fqdn                      = "nginx.ru-central1.internal" -> null
+      - hostname                  = "nginx" -> null
+      - id                        = "fhmdu02cveb8jhbmfjif" -> null
+      - labels                    = {} -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        } -> null
+      - name                      = "nginx-node01" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-a" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "fhm92tijr2ll3bee2jo7" -> null
+          - disk_id     = "fhm92tijr2ll3bee2jo7" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd84mnpg35f7s7b0f5lg" -> null
+              - name       = "root-node01" -> null
+              - size       = 10 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "192.168.100.11" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:df:00:4c:fb" -> null
+          - nat                = true -> null
+          - nat_ip_address     = "51.250.3.225" -> null
+          - nat_ip_version     = "IPV4" -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e9b7a43srvpqv04o0jmj" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 2 -> null
+          - gpus          = 0 -> null
+          - memory        = 2 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = false -> null
+        }
+    }
+
+  # yandex_compute_instance.node02 will be destroyed
+  - resource "yandex_compute_instance" "node02" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2022-10-05T18:43:05Z" -> null
+      - folder_id                 = "b1gem3u5mv0e4k9vjcif" -> null
+      - fqdn                      = "db01.ru-central1.internal" -> null
+      - hostname                  = "db01" -> null
+      - id                        = "epdtihhg12q1ojsam88a" -> null
+      - labels                    = {} -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        } -> null
+      - name                      = "db01-node02" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-b" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "epdm8dg5hpm9dknhohs7" -> null
+          - disk_id     = "epdm8dg5hpm9dknhohs7" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd8qps171vp141hl7g9l" -> null
+              - name       = "root-node02" -> null
+              - size       = 10 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "192.168.110.12" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:1d:94:63:00" -> null
+          - nat                = false -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e2lq16ihrvssp5e7qkn2" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 4 -> null
+          - gpus          = 0 -> null
+          - memory        = 4 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = false -> null
+        }
+    }
+
+  # yandex_compute_instance.node03 will be destroyed
+  - resource "yandex_compute_instance" "node03" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2022-10-05T18:43:05Z" -> null
+      - folder_id                 = "b1gem3u5mv0e4k9vjcif" -> null
+      - fqdn                      = "db02.ru-central1.internal" -> null
+      - hostname                  = "db02" -> null
+      - id                        = "epd2u0aunfvs5k0sak8c" -> null
+      - labels                    = {} -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        } -> null
+      - name                      = "db02-node03" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-b" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "epdkjk3a7djnhtq31773" -> null
+          - disk_id     = "epdkjk3a7djnhtq31773" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd8qps171vp141hl7g9l" -> null
+              - name       = "root-node03" -> null
+              - size       = 10 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "192.168.110.13" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:2f:01:5e:bb" -> null
+          - nat                = false -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e2lq16ihrvssp5e7qkn2" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 4 -> null
+          - gpus          = 0 -> null
+          - memory        = 4 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = false -> null
+        }
+    }
+
+  # yandex_compute_instance.node04 will be destroyed
+  - resource "yandex_compute_instance" "node04" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2022-10-05T18:43:05Z" -> null
+      - folder_id                 = "b1gem3u5mv0e4k9vjcif" -> null
+      - fqdn                      = "www.ru-central1.internal" -> null
+      - hostname                  = "www" -> null
+      - id                        = "epdji21cdiu1gi8ch705" -> null
+      - labels                    = {} -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        } -> null
+      - name                      = "app-node04" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-b" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "epdmlik1pte9gfelmoei" -> null
+          - disk_id     = "epdmlik1pte9gfelmoei" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd8qps171vp141hl7g9l" -> null
+              - name       = "root-node04" -> null
+              - size       = 10 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "192.168.110.14" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:13:90:82:c6" -> null
+          - nat                = false -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e2lq16ihrvssp5e7qkn2" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 4 -> null
+          - gpus          = 0 -> null
+          - memory        = 4 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = false -> null
+        }
+    }
+
+  # yandex_compute_instance.node05 will be destroyed
+  - resource "yandex_compute_instance" "node05" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2022-10-05T19:55:43Z" -> null
+      - folder_id                 = "b1gem3u5mv0e4k9vjcif" -> null
+      - fqdn                      = "gitlab.ru-central1.internal" -> null
+      - hostname                  = "gitlab" -> null
+      - id                        = "epdg5q8rhf0guj8cq00e" -> null
+      - labels                    = {} -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        } -> null
+      - name                      = "gitlab-node05" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-b" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "epd8vbu3spa40dmk1ji3" -> null
+          - disk_id     = "epd8vbu3spa40dmk1ji3" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd8qps171vp141hl7g9l" -> null
+              - name       = "root-node05" -> null
+              - size       = 16 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "192.168.110.15" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:10:2e:91:b8" -> null
+          - nat                = false -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e2lq16ihrvssp5e7qkn2" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 4 -> null
+          - gpus          = 0 -> null
+          - memory        = 8 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = false -> null
+        }
+    }
+
+  # yandex_compute_instance.node06 will be destroyed
+  - resource "yandex_compute_instance" "node06" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2022-10-05T18:43:05Z" -> null
+      - folder_id                 = "b1gem3u5mv0e4k9vjcif" -> null
+      - fqdn                      = "g-runner.ru-central1.internal" -> null
+      - hostname                  = "g-runner" -> null
+      - id                        = "epdii0lh06t3236148nl" -> null
+      - labels                    = {} -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        } -> null
+      - name                      = "runner-node06" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-b" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "epdg1jvtveqge40c7irv" -> null
+          - disk_id     = "epdg1jvtveqge40c7irv" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd8qps171vp141hl7g9l" -> null
+              - name       = "root-node06" -> null
+              - size       = 10 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "192.168.110.16" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:12:90:2b:10" -> null
+          - nat                = false -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e2lq16ihrvssp5e7qkn2" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 4 -> null
+          - gpus          = 0 -> null
+          - memory        = 4 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = false -> null
+        }
+    }
+
+  # yandex_compute_instance.node07 will be destroyed
+  - resource "yandex_compute_instance" "node07" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2022-10-05T18:43:05Z" -> null
+      - folder_id                 = "b1gem3u5mv0e4k9vjcif" -> null
+      - fqdn                      = "monitoring.ru-central1.internal" -> null
+      - hostname                  = "monitoring" -> null
+      - id                        = "epdbfqe1ofcodnv17vur" -> null
+      - labels                    = {} -> null
+      - metadata                  = {
+          - "ssh-keys" = <<-EOT
+                ubuntu:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCijzAgA7+IBgVR8Q5VZhvH1DbC1Nt+cUM5vtNZlJvTjVcsXKdtvHZY51vcuRymM0mrke3m7yanH/NS/4bw2hC851T/R3GJo7d8O0y6C+b4U+7djLcUv32PRKzHnnZ6RKo8MQtxWALz1Ibre+v8uHlzpHeDQS+gYXxbI7Ar8jHYjK701chsc0jypTWb+C19GH1m22hAntukMzwngCOSqlglS7c4KwZJrnlatE/g5xzhEJaSx/vhb3oW6ARQ7yrpEvA2+UlC+RcWwwlTSoqnbEauqPuopH0VP1hYuOI1DWV1cy4X64HdOQzrjjYKt7otTRjrL/K4ebyn2sWunRiikKrt 
+            EOT
+        } -> null
+      - name                      = "monitoring-node07" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-b" -> null
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "epd028nsbrdltcfua9a4" -> null
+          - disk_id     = "epd028nsbrdltcfua9a4" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size = 4096 -> null
+              - image_id   = "fd8qps171vp141hl7g9l" -> null
+              - name       = "root-node07" -> null
+              - size       = 10 -> null
+              - type       = "network-ssd" -> null
+            }
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "192.168.110.17" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:b7:e9:c1:c3" -> null
+          - nat                = false -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e2lq16ihrvssp5e7qkn2" -> null
+        }
+
+      - placement_policy {
+          - host_affinity_rules = [] -> null
+        }
+
+      - resources {
+          - core_fraction = 100 -> null
+          - cores         = 4 -> null
+          - gpus          = 0 -> null
+          - memory        = 4 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = false -> null
+        }
+    }
+
+  # yandex_dns_recordset.rs1 will be destroyed
+  - resource "yandex_dns_recordset" "rs1" {
+      - data    = [
+          - "51.250.3.225",
+        ] -> null
+      - id      = "dnsdnglglkocngcr2fa8/@/A" -> null
+      - name    = "@" -> null
+      - ttl     = 90 -> null
+      - type    = "A" -> null
+      - zone_id = "dnsdnglglkocngcr2fa8" -> null
+    }
+
+  # yandex_dns_recordset.rs2 will be destroyed
+  - resource "yandex_dns_recordset" "rs2" {
+      - data    = [
+          - "51.250.3.225",
+        ] -> null
+      - id      = "dnsdnglglkocngcr2fa8/www/A" -> null
+      - name    = "www" -> null
+      - ttl     = 90 -> null
+      - type    = "A" -> null
+      - zone_id = "dnsdnglglkocngcr2fa8" -> null
+    }
+
+  # yandex_dns_recordset.rs3 will be destroyed
+  - resource "yandex_dns_recordset" "rs3" {
+      - data    = [
+          - "51.250.3.225",
+        ] -> null
+      - id      = "dnsdnglglkocngcr2fa8/gitlab/A" -> null
+      - name    = "gitlab" -> null
+      - ttl     = 90 -> null
+      - type    = "A" -> null
+      - zone_id = "dnsdnglglkocngcr2fa8" -> null
+    }
+
+  # yandex_dns_recordset.rs4 will be destroyed
+  - resource "yandex_dns_recordset" "rs4" {
+      - data    = [
+          - "51.250.3.225",
+        ] -> null
+      - id      = "dnsdnglglkocngcr2fa8/grafana/A" -> null
+      - name    = "grafana" -> null
+      - ttl     = 90 -> null
+      - type    = "A" -> null
+      - zone_id = "dnsdnglglkocngcr2fa8" -> null
+    }
+
+  # yandex_dns_recordset.rs5 will be destroyed
+  - resource "yandex_dns_recordset" "rs5" {
+      - data    = [
+          - "51.250.3.225",
+        ] -> null
+      - id      = "dnsdnglglkocngcr2fa8/prometheus/A" -> null
+      - name    = "prometheus" -> null
+      - ttl     = 90 -> null
+      - type    = "A" -> null
+      - zone_id = "dnsdnglglkocngcr2fa8" -> null
+    }
+
+  # yandex_dns_recordset.rs6 will be destroyed
+  - resource "yandex_dns_recordset" "rs6" {
+      - data    = [
+          - "51.250.3.225",
+        ] -> null
+      - id      = "dnsdnglglkocngcr2fa8/alertmanager/A" -> null
+      - name    = "alertmanager" -> null
+      - ttl     = 90 -> null
+      - type    = "A" -> null
+      - zone_id = "dnsdnglglkocngcr2fa8" -> null
+    }
+
+  # yandex_dns_zone.zone1 will be destroyed
+  - resource "yandex_dns_zone" "zone1" {
+      - created_at       = "2022-10-05T18:43:01Z" -> null
+      - description      = "diplomds public zone" -> null
+      - folder_id        = "b1gem3u5mv0e4k9vjcif" -> null
+      - id               = "dnsdnglglkocngcr2fa8" -> null
+      - labels           = {
+          - "label1" = "diplomdsdns"
+        } -> null
+      - name             = "diplomdspubliczone" -> null
+      - private_networks = [] -> null
+      - public           = true -> null
+      - zone             = "dsolokhin.ru." -> null
+    }
+
+  # yandex_vpc_network.diploma-vpc-network will be destroyed
+  - resource "yandex_vpc_network" "diploma-vpc-network" {
+      - created_at = "2022-10-05T18:43:01Z" -> null
+      - folder_id  = "b1gem3u5mv0e4k9vjcif" -> null
+      - id         = "enpc8v6r2dqntbv6i254" -> null
+      - labels     = {} -> null
+      - name       = "diplomavpc" -> null
+      - subnet_ids = [
+          - "e2lq16ihrvssp5e7qkn2",
+          - "e9b7a43srvpqv04o0jmj",
+        ] -> null
+    }
+
+  # yandex_vpc_route_table.diploma-nat will be destroyed
+  - resource "yandex_vpc_route_table" "diploma-nat" {
+      - created_at = "2022-10-05T18:43:03Z" -> null
+      - folder_id  = "b1gem3u5mv0e4k9vjcif" -> null
+      - id         = "enp8jihbrggpar52a2e2" -> null
+      - labels     = {} -> null
+      - network_id = "enpc8v6r2dqntbv6i254" -> null
+
+      - static_route {
+          - destination_prefix = "0.0.0.0/0" -> null
+          - next_hop_address   = "192.168.100.11" -> null
+        }
+    }
+
+  # yandex_vpc_subnet.lan-b will be destroyed
+  - resource "yandex_vpc_subnet" "lan-b" {
+      - created_at     = "2022-10-05T18:43:04Z" -> null
+      - folder_id      = "b1gem3u5mv0e4k9vjcif" -> null
+      - id             = "e2lq16ihrvssp5e7qkn2" -> null
+      - labels         = {} -> null
+      - name           = "lansubnetb" -> null
+      - network_id     = "enpc8v6r2dqntbv6i254" -> null
+      - route_table_id = "enp8jihbrggpar52a2e2" -> null
+      - v4_cidr_blocks = [
+          - "192.168.110.0/24",
+        ] -> null
+      - v6_cidr_blocks = [] -> null
+      - zone           = "ru-central1-b" -> null
+    }
+
+  # yandex_vpc_subnet.public-a will be destroyed
+  - resource "yandex_vpc_subnet" "public-a" {
+      - created_at     = "2022-10-05T18:43:02Z" -> null
+      - folder_id      = "b1gem3u5mv0e4k9vjcif" -> null
+      - id             = "e9b7a43srvpqv04o0jmj" -> null
+      - labels         = {} -> null
+      - name           = "publicsubneta" -> null
+      - network_id     = "enpc8v6r2dqntbv6i254" -> null
+      - v4_cidr_blocks = [
+          - "192.168.100.0/24",
+        ] -> null
+      - v6_cidr_blocks = [] -> null
+      - zone           = "ru-central1-a" -> null
+    }
+
+Plan: 0 to add, 0 to change, 21 to destroy.
+
+Changes to Outputs:
+  - external_ip_address_node01_yandex_cloud = "51.250.3.225" -> null
+  - internal_ip_address_node01_yandex_cloud = "192.168.100.11" -> null
+  - internal_ip_address_node02_yandex_cloud = "192.168.110.12" -> null
+  - internal_ip_address_node03_yandex_cloud = "192.168.110.13" -> null
+  - internal_ip_address_node04_yandex_cloud = "192.168.110.14" -> null
+  - internal_ip_address_node05_yandex_cloud = "192.168.110.15" -> null
+  - internal_ip_address_node06_yandex_cloud = "192.168.110.16" -> null
+  - internal_ip_address_node07_yandex_cloud = "192.168.110.17" -> null
+null_resource.playbook: Destroying... [id=205142415]
+null_resource.playbook: Destruction complete after 0s
+null_resource.wait: Destroying... [id=424972553]
+null_resource.wait: Destruction complete after 0s
+local_file.inventory: Destroying... [id=7a7f6ed28d586e73ff26a71f879b4868e8d877cc]
+local_file.inventory: Destruction complete after 0s
+yandex_dns_recordset.rs3: Destroying... [id=dnsdnglglkocngcr2fa8/gitlab/A]
+yandex_dns_recordset.rs1: Destroying... [id=dnsdnglglkocngcr2fa8/@/A]
+yandex_compute_instance.node06: Destroying... [id=epdii0lh06t3236148nl]
+yandex_compute_instance.node04: Destroying... [id=epdji21cdiu1gi8ch705]
+yandex_compute_instance.node03: Destroying... [id=epd2u0aunfvs5k0sak8c]
+yandex_dns_recordset.rs4: Destroying... [id=dnsdnglglkocngcr2fa8/grafana/A]
+yandex_dns_recordset.rs6: Destroying... [id=dnsdnglglkocngcr2fa8/alertmanager/A]
+yandex_compute_instance.node02: Destroying... [id=epdtihhg12q1ojsam88a]
+yandex_dns_recordset.rs5: Destroying... [id=dnsdnglglkocngcr2fa8/prometheus/A]
+yandex_compute_instance.node05: Destroying... [id=epdg5q8rhf0guj8cq00e]
+yandex_dns_recordset.rs4: Destruction complete after 1s
+yandex_dns_recordset.rs2: Destroying... [id=dnsdnglglkocngcr2fa8/www/A]
+yandex_dns_recordset.rs1: Destruction complete after 1s
+yandex_compute_instance.node07: Destroying... [id=epdbfqe1ofcodnv17vur]
+yandex_dns_recordset.rs3: Destruction complete after 2s
+yandex_dns_recordset.rs2: Destruction complete after 1s
+yandex_dns_recordset.rs5: Destruction complete after 2s
+yandex_dns_recordset.rs6: Destruction complete after 2s
+yandex_compute_instance.node01: Destroying... [id=fhmdu02cveb8jhbmfjif]
+yandex_dns_zone.zone1: Destroying... [id=dnsdnglglkocngcr2fa8]
+yandex_dns_zone.zone1: Destruction complete after 1s
+yandex_compute_instance.node04: Still destroying... [id=epdji21cdiu1gi8ch705, 10s elapsed]
+yandex_compute_instance.node03: Still destroying... [id=epd2u0aunfvs5k0sak8c, 10s elapsed]
+yandex_compute_instance.node06: Still destroying... [id=epdii0lh06t3236148nl, 10s elapsed]
+yandex_compute_instance.node02: Still destroying... [id=epdtihhg12q1ojsam88a, 10s elapsed]
+yandex_compute_instance.node05: Still destroying... [id=epdg5q8rhf0guj8cq00e, 10s elapsed]
+yandex_compute_instance.node07: Still destroying... [id=epdbfqe1ofcodnv17vur, 10s elapsed]
+yandex_compute_instance.node01: Still destroying... [id=fhmdu02cveb8jhbmfjif, 10s elapsed]
+yandex_compute_instance.node02: Destruction complete after 20s
+yandex_compute_instance.node04: Destruction complete after 20s
+yandex_compute_instance.node06: Still destroying... [id=epdii0lh06t3236148nl, 20s elapsed]
+yandex_compute_instance.node03: Still destroying... [id=epd2u0aunfvs5k0sak8c, 20s elapsed]
+yandex_compute_instance.node05: Still destroying... [id=epdg5q8rhf0guj8cq00e, 20s elapsed]
+yandex_compute_instance.node07: Destruction complete after 19s
+yandex_compute_instance.node06: Destruction complete after 21s
+yandex_compute_instance.node01: Still destroying... [id=fhmdu02cveb8jhbmfjif, 20s elapsed]
+yandex_compute_instance.node01: Destruction complete after 22s
+yandex_vpc_subnet.public-a: Destroying... [id=e9b7a43srvpqv04o0jmj]
+yandex_vpc_subnet.public-a: Destruction complete after 6s
+yandex_compute_instance.node03: Still destroying... [id=epd2u0aunfvs5k0sak8c, 30s elapsed]
+yandex_compute_instance.node05: Still destroying... [id=epdg5q8rhf0guj8cq00e, 30s elapsed]
+yandex_compute_instance.node03: Destruction complete after 39s
+yandex_compute_instance.node05: Still destroying... [id=epdg5q8rhf0guj8cq00e, 40s elapsed]
+yandex_compute_instance.node05: Destruction complete after 50s
+yandex_vpc_subnet.lan-b: Destroying... [id=e2lq16ihrvssp5e7qkn2]
+yandex_vpc_subnet.lan-b: Destruction complete after 7s
+yandex_vpc_route_table.diploma-nat: Destroying... [id=enp8jihbrggpar52a2e2]
+yandex_vpc_route_table.diploma-nat: Destruction complete after 1s
+yandex_vpc_network.diploma-vpc-network: Destroying... [id=enpc8v6r2dqntbv6i254]
+yandex_vpc_network.diploma-vpc-network: Destruction complete after 0s
+
+Destroy complete! Resources: 21 destroyed.
+reyson@reyson-VirtualBox:~/diploma-ds-master/terraform/stage$ 
+

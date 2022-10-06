@@ -1,0 +1,19 @@
+---
+- name: "Ensure Nginx is installed"
+  package: name=nginx state=present
+  become: yes
+
+- name: "Ensure www home exists"
+  file:
+    path: "{{ nginx.www_home }}"
+    state: directory
+    owner: "{{ nginx.webserver.user }}"
+    group: "{{ nginx.webserver.group }}"
+    mode: 0755
+  become: yes
+
+- name: "Ensure default webroot is disabled"
+  file:
+    path: "{{ nginx.configuration_root }}/sites-enabled/default"
+    state: absent
+  become: yes

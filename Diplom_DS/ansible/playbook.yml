@@ -1,0 +1,47 @@
+---
+- hosts: all
+  pre_tasks:
+    - name: "Update Package Cache (apt/Ubuntu)"
+      tags: always
+      apt:
+        update_cache: yes
+      changed_when: false
+      when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  roles:
+    - pre_tasks
+
+- hosts: nginx.dsolokhin.ru
+  roles:
+    - nginx_base
+    - nginx
+    - nginx_tls
+    - nginx_proxy
+    - nodeexporter
+
+- hosts: db
+  roles:
+    - mysql
+    - nodeexporter
+
+- hosts: www.dsolokhin.ru
+  roles:
+    - wordpress
+    - nodeexporter
+
+- hosts: gitlab.dsolokhin.ru
+  roles:
+    - gitlab
+    - nodeexporter
+
+- hosts: runner.dsolokhin.ru
+  roles:
+    - runner
+    - nodeexporter
+
+- hosts: monitoring.dsolokhin.ru
+  roles:
+    - all_modules_monitoring
+    - nodeexporter
+

@@ -1,0 +1,35 @@
+---
+- name: "Add hosts for node 01"
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ip_node01 }} nginx www.{{ domain_name }}"
+
+- name: "Add hosts for node 02"
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ip_node02 }} db01 db01.{{ domain_name }}"
+
+- name: "Add hosts for node 03"
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ip_node03 }} db02 db02.{{ domain_name }}"
+
+- name: "Add hosts for node 04"
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ip_node04 }} app www.{{ domain_name}}"
+
+- name: "Add hosts for node 05"
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ip_node05 }} gitlab gitlab.{{ domain_name }}"
+
+- name: "Add hosts for node 06"
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ip_node06 }} runner runner.{{ domain_name }}"
+
+- name: "Add hosts for node 07"
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ ip_node07 }} monitoring monitoring.{{ domain_name }}"
